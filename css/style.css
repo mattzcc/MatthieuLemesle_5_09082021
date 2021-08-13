@@ -156,7 +156,7 @@ body .header__cart {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 20px 20px;
+  padding: 1.5rem;
 }
 .header_text--color {
   color: #fff;
@@ -174,7 +174,7 @@ body .header__cart {
 @media screen and (min-width: 1200px) {
   .header__cart-name {
     display: block;
-    padding-right: 10px;
+    padding-right: 0.8rem;
   }
 }
 
@@ -185,15 +185,20 @@ body .header__cart {
 }
 
 .items-list {
-  background: linear-gradient(to bottom, #FDB99B, #CD8BF3);
-  padding: 50px 25px;
+  background: linear-gradient(to bottom, #fecbb4, #e1b9f8);
+  padding: 4rem 4rem;
 }
 
 .teddies {
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
-  grid-gap: 20px;
+  grid-gap: 4rem;
+}
+@media screen and (min-width: 768px) {
+  .teddies {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 @media screen and (min-width: 1200px) {
   .teddies {
@@ -205,11 +210,13 @@ body .header__cart {
 }
 .teddies__card {
   background: white;
-  border-radius: 10px;
+  box-shadow: 1px 1px 5px #4c4c4c;
+  border-radius: 0.2rem;
+  padding: 0.6rem;
 }
 .teddies__card-img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 0.2rem;
 }
 
 .btn-nav {

@@ -1,13 +1,17 @@
 .items-list {
-    background: linear-gradient(to bottom, #FDB99B, #CD8BF3);
-    padding: 50px 25px;
+    background: linear-gradient(to bottom,lighten(#FDB99B, 5), lighten(#CD8BF3, 10));
+    padding: 4rem 4rem;
 }
 
 .teddies {
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
-    grid-gap: 20px;
+    grid-gap: 4rem;
+
+    @include screen-tablet {
+        grid-template-columns: 1fr 1fr;
+    }
 
     @include screen-desktop {
         grid-template-columns: 1fr 1fr 1fr;
@@ -19,11 +23,13 @@
 
     &__card {
         background: white;
-        border-radius: 10px;
+        box-shadow: 1px 1px 5px rgb(76, 76, 76);
+        border-radius: .2rem;
+        padding: 0.6rem;
 
         &-img {
             width: 100%;
-            border-radius: 10px;
+            border-radius: .2rem;
         }
     }
 }
