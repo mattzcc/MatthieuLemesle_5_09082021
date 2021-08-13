@@ -1,0 +1,20 @@
+.button {
+    background-color: $color-secondary;
+    border-radius: .5rem;
+    border: white solid 1px;
+    
+    &__footer-icon {
+        color: $color-primary;
+        font-size: 1.5em;
+        padding-right: .25rem;
+    }
+
+    &__footer-link {
+        font-family: 'Rubik', sans-serif;
+        text-decoration: none;
+        color: $color-primary;
+        font-weight: bold;
+        font-size: 1.2em;
+        text-transform: uppercase;
+    }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "mes-parrainages",
+  "version": "1.0.0",
+  "description": "Matthieu Lemesle",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/main.scss:./css/style.css",
+    "prefix": "postcss ./css/style.css --use autoprefixer -d ./css/style.css",
+    "prod": "sass --watch ./sass/main.scss:./css/style.css --style compressed postcss /css/style.css --use autoprefixer -d /css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattzcc/Matthieu-Lemesle.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattzcc/Matthieu-Lemesle/issues"
+  },
+  "homepage": "https://github.com/mattzcc/Matthieu-Lemesle#readme"
+}

@@ -1,0 +1,46 @@
+@mixin shadow {
+    box-shadow: 0 2px 4px $color-shadow;
+}
+
+@mixin btn-style {
+    background: radial-gradient(ellipse farthest-corner at top left, $color-secondary 0%, $color-primary 100%);
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px $color-shadow;
+}
+
+@mixin btn-style-hover {
+    opacity: .7;
+    box-shadow: 0 8px 6px $color-shadow;
+}
+
+@mixin heart-empty {
+    font-size: 1.5em;
+    color: transparent;
+    -webkit-text-stroke: 2px black;
+}
+
+@mixin heart-full {
+    background: linear-gradient(225deg, #9356DC 29%, #FF79DA 85%);
+    background-clip: content-box;
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 0;
+    -webkit-animation: anim-heart 400ms ease-in;
+    animation: anim-heart 400ms ease-in;
+}
+
+@mixin screen-tablet {
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
+        @content;
+    }
+}
+
+@mixin screen-desktop {
+    @media screen and (min-width: map-get($breakpoints, desktop)) {
+        @content;
+    }
+}

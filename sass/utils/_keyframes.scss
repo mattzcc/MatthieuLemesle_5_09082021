@@ -1,0 +1,148 @@
+@-webkit-keyframes loader {
+    to {
+        visibility: visible;
+        transform: rotate(1turn);
+        opacity: .3;
+    }
+}
+
+@keyframes loader {
+    to {
+        visibility: visible;
+        transform: rotate(1turn);
+        opacity: .3;
+    }
+}
+
+@-webkit-keyframes font-page {
+    0% {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes font-page {
+    0% {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes loader-logo {
+    0% {
+        opacity: 1;
+    }
+
+    60% {
+        opacity: 0.8;
+    }
+
+    100% {
+        letter-spacing: 0.5em;
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes anim-heart {
+    0% {
+        opacity: .1;
+    }
+
+    50% {
+        opacity: .5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes anim-heart {
+    0% {
+        opacity: .1;
+    }
+
+    50% {
+        opacity: .5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes anim_menu {
+    0% {
+        opacity: 0;
+        transform: translateY(5%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes anim_menu {
+    0% {
+        opacity: 0;
+        transform: translateY(5%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@-webkit-keyframes anim-scale-check {
+    0% {
+        transform: scaleX(0.1);
+        transform-origin: 100% 100%;
+    }
+
+    100% {
+        transform: scaleX(1);
+        transform-origin: 100% 100%;
+    }
+}
+
+@keyframes anim-scale-check {
+    0% {
+        transform: scaleX(0.1);
+        transform-origin: 100% 100%;
+    }
+
+    100% {
+        transform: scaleX(1);
+        transform-origin: 100% 100%;
+    }
+}
+
+@-webkit-keyframes rotate-center {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes rotate-center {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(1turn);
+    }
+}
