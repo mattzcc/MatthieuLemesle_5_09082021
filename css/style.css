@@ -180,13 +180,52 @@ body .header__cart {
 
 .footer {
   width: 100%;
-  height: 100px;
   background: #303030;
+  color: #FFF;
+  padding: 1.5rem;
+}
+@media screen and (min-width: 1200px) {
+  .footer {
+    display: flex;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .footer .separation-line {
+    display: none;
+  }
+}
+.footer__block {
+  width: fit-content;
+}
+@media screen and (min-width: 1200px) {
+  .footer__block {
+    display: flex;
+    flex-direction: column;
+    padding-right: 17rem;
+  }
+}
+.footer__block-title {
+  margin-top: 0;
+}
+.footer__block-links {
+  color: #FFF;
+  line-height: 1.8em;
+  width: fit-content;
+}
+.footer__block-social {
+  display: flex;
+  align-items: baseline;
+}
+.footer__block-social__icon {
+  padding-right: 0.8rem;
 }
 
 .items-list {
   background: #f8deb0;
   padding: 4rem 4rem;
+}
+.items-list__title {
+  margin-top: 0;
 }
 
 .teddies {
@@ -213,6 +252,11 @@ body .header__cart {
   box-shadow: 1px 1px 5px #4c4c4c;
   border-radius: 0.2rem;
   padding: 0.6rem;
+  transform: scale(1);
+  transition: all, 200ms;
+}
+.teddies__card:hover {
+  transform: scale(1.02);
 }
 .teddies__card-img {
   width: 100%;

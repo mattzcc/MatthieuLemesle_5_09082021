@@ -2,6 +2,10 @@
     // background: linear-gradient(to bottom,lighten(#FDB99B, 5), lighten(#CD8BF3, 10));
     background: #f8deb0;
     padding: 4rem 4rem;
+
+    &__title {
+        margin-top: 0;
+    }
 }
 
 .teddies {
@@ -27,6 +31,12 @@
         box-shadow: 1px 1px 5px rgb(76, 76, 76);
         border-radius: .2rem;
         padding: 0.6rem;
+        transform: scale(1);
+        transition: all, 200ms;
+
+        &:hover{
+            transform: scale(1.02);
+        }
 
         &-img {
             width: 100%;
