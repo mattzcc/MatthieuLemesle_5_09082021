@@ -8,37 +8,36 @@
       display: flex;
    }
 
-   .separation-line{
-      @include screen-desktop{
+   .separation-line {
+      @include screen-desktop {
          display: none;
       }
    }
 
    &__block {
       width: fit-content;
+
       @include screen-desktop {
          display: flex;
          flex-direction: column;
          padding-right: 17rem;
       }
+   }
 
-      &-title {
-         margin-bottom: 1rem;
+   &__title {
+      margin-bottom: 1rem;
+   }
+
+   &__link{
+      display: flex;
+      align-items: baseline;
+
+      &--color{
+         color: #fff;
       }
+   }
 
-      &-links {
-         color: #FFF;
-         line-height: 1.8em;
-         width: fit-content;
-      }
-
-      &-social {
-         display: flex;
-         align-items: baseline;
-
-         &__icon {
-            padding-right: 0.8rem;
-         }
-      }
+   &__socialIcon{
+      padding-right: 0.5rem;
    }
 }

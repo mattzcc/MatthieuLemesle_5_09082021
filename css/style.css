@@ -214,20 +214,18 @@ body .header__cart {
     padding-right: 17rem;
   }
 }
-.footer__block-title {
+.footer__title {
   margin-bottom: 1rem;
 }
-.footer__block-links {
-  color: #FFF;
-  line-height: 1.8em;
-  width: fit-content;
-}
-.footer__block-social {
+.footer__link {
   display: flex;
   align-items: baseline;
 }
-.footer__block-social__icon {
-  padding-right: 0.8rem;
+.footer__link--color {
+  color: #fff;
+}
+.footer__socialIcon {
+  padding-right: 0.5rem;
 }
 
 .items-list {
@@ -273,42 +271,6 @@ body .header__cart {
   border-radius: 0.2rem;
 }
 
-/* .teddies {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-    grid-gap: 3rem;
-
-    @include screen-tablet {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    @include screen-desktop {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    &__links {
-        width: 100%;
-    }
-
-    &__card {
-        background: white;
-        box-shadow: 1px 1px 5px rgb(76, 76, 76);
-        border-radius: .2rem;
-        padding: 0.6rem;
-        transform: scale(1);
-        transition: all, 200ms;
-
-        &:hover{
-            transform: scale(1.02);
-        }
-
-        &-img {
-            width: 100%;
-            border-radius: .2rem;
-        }
-    }
-} */
 .btn-nav {
   text-decoration: none;
   background-color: #321d62;
