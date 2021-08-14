@@ -230,7 +230,7 @@ body .header__cartContainer {
 }
 
 .items-list {
-  background: #f8deb0;
+  background: linear-gradient(to bottom, #f8deb0, #e2c491);
   padding: 4rem 4rem;
 }
 .items-list__title {
