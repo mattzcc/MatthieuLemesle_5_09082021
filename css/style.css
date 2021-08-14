@@ -137,6 +137,16 @@ a {
   color: #000;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
 li {
   list-style-type: none;
 }
@@ -205,7 +215,7 @@ body .header__cart {
   }
 }
 .footer__block-title {
-  margin-top: 0;
+  margin-bottom: 1rem;
 }
 .footer__block-links {
   color: #FFF;
@@ -225,7 +235,7 @@ body .header__cart {
   padding: 4rem 4rem;
 }
 .items-list__title {
-  margin-top: 0;
+  margin-bottom: 1.5rem;
 }
 
 .teddies {
