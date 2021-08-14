@@ -242,7 +242,7 @@ body .header__cart {
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
-  grid-gap: 4rem;
+  grid-gap: 3rem;
 }
 @media screen and (min-width: 768px) {
   .teddies {
