@@ -8,7 +8,43 @@
     }
 }
 
-.teddies {
+.products-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    grid-gap: 3rem;
+
+    @include screen-tablet {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @include screen-desktop {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.card {
+    display: block;
+    width: 100%;
+    background: white;
+    box-shadow: 1px 1px 5px rgb(76, 76, 76);
+    border-radius: .2rem;
+    padding: 0.6rem;
+    transform: scale(1);
+    transition: all, 200ms;
+
+    &:hover {
+        transform: scale(1.02);
+    }
+
+    &__img{
+        width: 100%;
+        border-radius: .2rem;
+    }
+}
+
+
+/* .teddies {
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
@@ -43,4 +79,4 @@
             border-radius: .2rem;
         }
     }
-}
+} */

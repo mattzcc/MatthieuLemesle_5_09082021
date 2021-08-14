@@ -238,26 +238,26 @@ body .header__cart {
   margin-bottom: 1.5rem;
 }
 
-.teddies {
+.products-grid {
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
   grid-gap: 3rem;
 }
 @media screen and (min-width: 768px) {
-  .teddies {
+  .products-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
 @media screen and (min-width: 1200px) {
-  .teddies {
+  .products-grid {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
-.teddies__links {
+
+.card {
+  display: block;
   width: 100%;
-}
-.teddies__card {
   background: white;
   box-shadow: 1px 1px 5px #4c4c4c;
   border-radius: 0.2rem;
@@ -265,14 +265,50 @@ body .header__cart {
   transform: scale(1);
   transition: all, 200ms;
 }
-.teddies__card:hover {
+.card:hover {
   transform: scale(1.02);
 }
-.teddies__card-img {
+.card__img {
   width: 100%;
   border-radius: 0.2rem;
 }
 
+/* .teddies {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    grid-gap: 3rem;
+
+    @include screen-tablet {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @include screen-desktop {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    &__links {
+        width: 100%;
+    }
+
+    &__card {
+        background: white;
+        box-shadow: 1px 1px 5px rgb(76, 76, 76);
+        border-radius: .2rem;
+        padding: 0.6rem;
+        transform: scale(1);
+        transition: all, 200ms;
+
+        &:hover{
+            transform: scale(1.02);
+        }
+
+        &-img {
+            width: 100%;
+            border-radius: .2rem;
+        }
+    }
+} */
 .btn-nav {
   text-decoration: none;
   background-color: #321d62;
