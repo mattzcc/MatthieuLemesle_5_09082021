@@ -157,7 +157,7 @@ body {
 body .header {
   font-family: "Lakki Reddy", cursive;
 }
-body .header__cart {
+body .header__cartContainer {
   font-family: "Titillium Web", sans-serif;
 }
 
@@ -168,21 +168,22 @@ body .header__cart {
   align-items: baseline;
   padding: 1.5rem;
 }
-.header_text--color {
+.header__logo--color, .header__cartContainer--color {
   color: #fff;
 }
-.header__name {
+.header__logo {
   font-size: 2.5em;
 }
-.header__cart {
+.header__cartContainer {
   display: flex;
+  align-items: baseline;
   font-size: 1.5em;
 }
-.header__cart-name {
+.header__cartName {
   display: none;
 }
 @media screen and (min-width: 1200px) {
-  .header__cart-name {
+  .header__cartName {
     display: block;
     padding-right: 0.8rem;
   }
