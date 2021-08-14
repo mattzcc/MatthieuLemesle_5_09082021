@@ -1,4 +1,17 @@
-@-webkit-keyframes loader {
+@keyframes button-products-list {
+    0% {
+        transform: scaleY(0.4);
+    }
+
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+
+
+
+/* @-webkit-keyframes loader {
     to {
         visibility: visible;
         transform: rotate(1turn);
@@ -145,4 +158,4 @@
     100% {
         transform: rotate(1turn);
     }
-}
+} */

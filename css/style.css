@@ -1,125 +1,159 @@
-@-webkit-keyframes loader {
-  to {
-    visibility: visible;
-    transform: rotate(1turn);
-    opacity: 0.3;
+@keyframes button-products-list {
+  0% {
+    transform: scaleY(0.4);
+  }
+  100% {
+    transform: scaleY(1);
   }
 }
+/* @-webkit-keyframes loader {
+    to {
+        visibility: visible;
+        transform: rotate(1turn);
+        opacity: .3;
+    }
+}
+
 @keyframes loader {
-  to {
-    visibility: visible;
-    transform: rotate(1turn);
-    opacity: 0.3;
-  }
+    to {
+        visibility: visible;
+        transform: rotate(1turn);
+        opacity: .3;
+    }
 }
+
 @-webkit-keyframes font-page {
-  0% {
-    visibility: visible;
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-  }
+    0% {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
+
 @keyframes font-page {
-  0% {
-    visibility: visible;
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-  }
+    0% {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
+
 @keyframes loader-logo {
-  0% {
-    opacity: 1;
-  }
-  60% {
-    opacity: 0.8;
-  }
-  100% {
-    letter-spacing: 0.5em;
-    opacity: 0;
-  }
+    0% {
+        opacity: 1;
+    }
+
+    60% {
+        opacity: 0.8;
+    }
+
+    100% {
+        letter-spacing: 0.5em;
+        opacity: 0;
+    }
 }
+
 @-webkit-keyframes anim-heart {
-  0% {
-    opacity: 0.1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
+    0% {
+        opacity: .1;
+    }
+
+    50% {
+        opacity: .5;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
+
 @keyframes anim-heart {
-  0% {
-    opacity: 0.1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
+    0% {
+        opacity: .1;
+    }
+
+    50% {
+        opacity: .5;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
+
 @-webkit-keyframes anim_menu {
-  0% {
-    opacity: 0;
-    transform: translateY(5%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    0% {
+        opacity: 0;
+        transform: translateY(5%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
 @keyframes anim_menu {
-  0% {
-    opacity: 0;
-    transform: translateY(5%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    0% {
+        opacity: 0;
+        transform: translateY(5%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
 @-webkit-keyframes anim-scale-check {
-  0% {
-    transform: scaleX(0.1);
-    transform-origin: 100% 100%;
-  }
-  100% {
-    transform: scaleX(1);
-    transform-origin: 100% 100%;
-  }
+    0% {
+        transform: scaleX(0.1);
+        transform-origin: 100% 100%;
+    }
+
+    100% {
+        transform: scaleX(1);
+        transform-origin: 100% 100%;
+    }
 }
+
 @keyframes anim-scale-check {
-  0% {
-    transform: scaleX(0.1);
-    transform-origin: 100% 100%;
-  }
-  100% {
-    transform: scaleX(1);
-    transform-origin: 100% 100%;
-  }
+    0% {
+        transform: scaleX(0.1);
+        transform-origin: 100% 100%;
+    }
+
+    100% {
+        transform: scaleX(1);
+        transform-origin: 100% 100%;
+    }
 }
+
 @-webkit-keyframes rotate-center {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(1turn);
-  }
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(1turn);
+    }
 }
+
 @keyframes rotate-center {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(1turn);
-  }
-}
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(1turn);
+    }
+} */
 body {
   margin: 0;
   padding: 0;
@@ -257,15 +291,31 @@ body .header__cartContainer {
 .card {
   display: block;
   width: 100%;
-  background: white;
+  background: #fff;
   box-shadow: 1px 1px 5px #4c4c4c;
   border-radius: 0.2rem;
   padding: 0.6rem;
   transform: scale(1);
   transition: all, 200ms;
+  position: relative;
 }
 .card:hover {
   transform: scale(1.02);
+}
+.card:hover .card__button {
+  visibility: visible;
+  animation: button-products-list 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+.card__button {
+  position: absolute;
+  bottom: 50%;
+  left: 30%;
+  background: linear-gradient(to bottom, #fecbb4, #e1b9f8);
+  border-radius: 2rem;
+  padding: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  visibility: hidden;
 }
 .card__img {
   width: 100%;

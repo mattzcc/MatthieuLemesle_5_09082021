@@ -26,18 +26,37 @@
 .card {
     display: block;
     width: 100%;
-    background: white;
+    background: #fff;
     box-shadow: 1px 1px 5px rgb(76, 76, 76);
     border-radius: .2rem;
     padding: 0.6rem;
     transform: scale(1);
     transition: all, 200ms;
+    position: relative;
 
     &:hover {
         transform: scale(1.02);
+        // filter: grayscale(80%);
+
+        .card__button {
+            visibility: visible;
+            animation: button-products-list 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000);
+        }
     }
 
-    &__img{
+    &__button {
+        position: absolute;
+        bottom: 50%;
+        left: 30%;
+        background: linear-gradient(to bottom, lighten(#FDB99B, 5), lighten(#CD8BF3, 10));
+        border-radius: 2rem;
+        padding: .8rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        visibility: hidden;
+    }
+
+    &__img {
         width: 100%;
         border-radius: .2rem;
     }
