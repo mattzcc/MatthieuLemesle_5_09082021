@@ -222,6 +222,10 @@ body .header__cartContainer {
     padding-right: 0.8rem;
   }
 }
+.header__cartIcon {
+  color: transparent;
+  -webkit-text-stroke: 1px #FFF;
+}
 
 .footer {
   width: 100%;

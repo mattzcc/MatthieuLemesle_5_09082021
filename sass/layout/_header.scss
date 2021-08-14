@@ -28,4 +28,9 @@
             padding-right: 0.8rem;
         }
     }
+
+    &__cartIcon {
+        color: transparent;
+        -webkit-text-stroke: 1px #FFF;
+    }
 }
