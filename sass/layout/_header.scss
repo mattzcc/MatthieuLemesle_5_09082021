@@ -1,5 +1,5 @@
 .header {
-    background: #303030;
+    background: #fff;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -7,7 +7,7 @@
 
     &__logo--color,
     &__cartContainer--color {
-        color: #fff;
+        color: #303030;
     }
 
     &__logo {
@@ -17,10 +17,11 @@
     &__cartContainer {
         display: flex;
         align-items: baseline;
-        font-size: 1.5em;
     }
 
     &__cartName {
+        font-size: 1.3em;
+        font-weight: bold;
         display: none;
 
         @include screen-desktop {
@@ -30,7 +31,8 @@
     }
 
     &__cartIcon {
+        font-size: 1.8em;
         color: transparent;
-        -webkit-text-stroke: 1px #FFF;
+        -webkit-text-stroke: 1px #303030;
     }
 }
