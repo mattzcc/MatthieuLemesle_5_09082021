@@ -450,7 +450,7 @@ body .header__cartContainer {
 }
 @media screen and (min-width: 768px) {
   .product__option {
-    grid-area: 3/2/4/-3;
+    grid-area: 4/2/4/-2;
   }
 }
 
