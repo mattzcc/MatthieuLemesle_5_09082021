@@ -105,14 +105,19 @@
   }
 }
 
-.product__option {
+.product__dropdown-option {
   justify-self: center;
   grid-area: 4 / 1 / 5 / 2;
+
 
   @include screen-tablet {
    grid-area: 4 / 2 / 5 / -2;
     // grid-area: 3 / 2 / 4 ;
   }
+}
+
+#color-select{
+font-size: 1em;
 }
 
 .product__button {

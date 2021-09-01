@@ -36,7 +36,7 @@
     transform: scale(1);
     transition: all, 200ms;
     position: relative;
-    
+
 
     &:hover {
         transform: scale(1.02);
@@ -66,7 +66,10 @@
     }
 
     &__img {
+        display: block;
         width: 100%;
+        min-height: 80%;
+        object-fit: cover;
         border-radius: 2rem 2rem 0 0;
     }
 

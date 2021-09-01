@@ -185,13 +185,13 @@ li {
   list-style-type: none;
 }
 
-body {
+body, #color-select {
   font-family: "Titillium Web", sans-serif;
 }
-body .header {
+body .header, #color-select .header {
   font-family: "Lakki Reddy", cursive;
 }
-body .header__cartContainer {
+body .header__cartContainer, #color-select .header__cartContainer {
   font-family: "Titillium Web", sans-serif;
 }
 
@@ -329,7 +329,10 @@ body .header__cartContainer {
   text-transform: uppercase;
 }
 .card__img {
+  display: block;
   width: 100%;
+  min-height: 80%;
+  object-fit: cover;
   border-radius: 2rem 2rem 0 0;
 }
 .card__content {
@@ -444,14 +447,18 @@ body .header__cartContainer {
   }
 }
 
-.product__option {
+.product__dropdown-option {
   justify-self: center;
   grid-area: 4/1/5/2;
 }
 @media screen and (min-width: 768px) {
-  .product__option {
+  .product__dropdown-option {
     grid-area: 4/2/5/-2;
   }
+}
+
+#color-select {
+  font-size: 1em;
 }
 
 .product__button {
