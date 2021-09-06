@@ -1,7 +1,71 @@
-table{
+// tableau 
+table {
     border-collapse: collapse;
+    margin: 0 auto;
+    width: 70%;
 }
 
 td {
     border: #000 1px solid;
+    text-align: center;
+}
+
+// formulaire
+/* form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    line-height: 1.8rem;
+}
+
+*[class^="block__form"] {
+    @include screen-desktop {
+        display: flex;
+        margin: 1rem 0;
+    }
+}
+
+label{
+    @include screen-desktop {
+        margin: 0 1.8rem;
+    }
+} */
+
+// *[class^="block__form"] {
+// width: 100%;
+// }
+
+#form {
+    margin: 1.5rem auto;
+    line-height: 2.5rem;
+
+    @include screen-desktop {
+        width: 70%;
+    }
+}
+
+.form__container {
+    display: flex;
+}
+
+.form__block {
+    display: flex;
+    flex-direction: column;
+
+    @include screen-desktop {
+        width: 100%;
+        margin-right: 1rem;
+    }
+}
+
+.form__input {
+    border: black 1px solid;
+    border-radius: .3rem;
+    padding: .5rem;
+}
+
+.form__button {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
 }

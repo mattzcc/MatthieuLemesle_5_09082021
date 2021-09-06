@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta content="To be completed" name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="./img/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
         href="https://fonts.googleapis.com/css2?family=Lakki+Reddy&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/bb065dc08a.js" crossorigin="anonymous"></script>
-    <script src="../js/app.js" defer></script>
+    <script src="../js/cart.js" defer></script>
     <title>OriTeddy by Orinoco</title>
 </head>
 
@@ -24,8 +24,8 @@
 
     <!-- Header -->
     <header class="header">
-        <a href="#" class="header__logo header__logo--color">OriTeddy</a>
-        <a href="#" class="header__cartContainer header__cartContainer--color">
+        <a href="../index.html" class="header__logo header__logo--color">OriTeddy</a>
+        <a href="./cart.html" class="header__cartContainer header__cartContainer--color">
             <span class="header__cartName">Panier</span>
             <i class="fas fa-shopping-cart header__cartIcon"></i>
         </a>
@@ -35,8 +35,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>Nom</th>
-                    <th>Option</th>
+                    <th>Article</th>
                     <th>Prix</th>
                     <th>Quantité</th>
                     <th>Sous-total</th>
@@ -50,6 +49,12 @@
                     <td>Cellule</td>
                     <td>Cellule</td>
                     <td>Cellule</td>
+                </tr>
+                <tr>
+                    <td>Cellule</td>
+                    <td>Cellule</td>
+                    <td>Cellule</td>
+                    <td>Cellule</td>
                     <td>Cellule</td>
                 </tr>
                 <tr>
@@ -58,18 +63,8 @@
                     <td>Cellule</td>
                     <td>Cellule</td>
                     <td>Cellule</td>
-                    <td>Cellule</td>
                 </tr>
                 <tr>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                </tr>
-                <tr>
-                    <td>Cellule</td>
                     <td>Cellule</td>
                     <td>Cellule</td>
                     <td>Cellule</td>
@@ -79,36 +74,49 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="6">Total</td>
+                    <td colspan="5">Total</td>
                 </tr>
             </tfoot>
         </table>
 
-        <form>
-            <label for="civility-select">Civilité</label><br>
-            <select name="civility" id="civility-select">
-                <option value="">Sélectionnez</option>
-                <option value="Monsieur">Monsieur</option>
-                <option value="Madame">Madame</option>
-            </select>
-            <br />
-            <label for="lastname">Nom</label><br />
-            <input name="lastname" type="text" placeholder="Votre nom de famille" /> <br />
-            <label for="firstname">Prénom</label><br />
-            <input name="firstname" type="text" placeholder="Votre prénom" /> <br />
-            <label for="address">Adresse</label><br />
-            <input name="address" type="text" placeholder="Votre adresse" /> <br />
-            <label for="name">Code Postal</label><br />
-            <input name="name" type="text" placeholder="ex: 83200" /> <br />
-            <label for="name">Ville</label><br />
-            <input name="name" type="text" placeholder="Votre ville" /> <br />
-            <label for="name">Numéro de téléphone</label><br />
-            <input name="name" type="text" placeholder="ex: 0612345678" /> <br />
-            <label for="name">E-mail</label><br />
-            <input name="name" type="text" placeholder="exemple@mail.com" /> <br />
-            <input name="checkbox" type="checkbox" value="1" /> J'ai lu et j'accepte les conditions générales de
-            vente.<br />
-            <button type="submit" value="Submit">Commander</button>
+        <form id="form">
+            <div class="form__container">
+                <div class="form__block"><label for="civility-select">Civilité</label>
+                    <select class="form__input" name="civility" id="civility-select">
+                        <option value="">Sélectionnez</option>
+                        <option value="Monsieur">Monsieur</option>
+                        <option value="Madame">Madame</option>
+                    </select></div>
+            </div>
+            <div class="form__container">
+                <div class="form__block"><label for="lastName" class="form__title">Nom</label>
+                    <input class="form__input" name="lastName" type="text" placeholder="Votre nom de famille" /></div>
+                <div class="form__block"><label for="firstName" class="form__title">Prénom</label>
+                    <input class="form__input" name="firstName" type="text" placeholder="Votre prénom" /></div>
+            </div>
+            <div class="form__container">
+                <div class="form__block">
+                    <label for="address" class="form__title">Adresse</label>
+                    <input class="form__input" name="address" type="text"
+                        placeholder="Votre adresse" /></div>
+            </div>
+            <div class="form__container">
+                <div class="form__block"><label for="zipCode" class="form__title">Code Postal</label>
+                    <input class="form__input" name="zipCode" type="text" placeholder="ex: 83200" /></div>
+                <div class="form__block"><label for="city" class="form__title">Ville</label>
+                    <input class="form__input" name="city" type="text" placeholder="Votre ville" /></div>
+            </div>
+            <div class="form__container">
+                <div class="form__block"><label for="phone" class="form__title">Téléphone</label>
+                    <input class="form__input" name="phone" type="text" placeholder="ex: 0612345678" /></div>
+                <div class="form__block"><label for="email" class="form__title">E-mail</label>
+                    <input class="form__input" name="email" type="text" placeholder="exemple@mail.com" /></div>
+            </div>
+
+            <!-- <input name="checkbox" type="checkbox" value="1" /> J'ai lu et j'accepte les conditions générales de
+            vente.<br /> -->
+            <div class="form__button"><button type="submit" value="Submit"
+                    class="card__button--style">Commander</button></div>
         </form>
     </main>
     <!-- Footer -->
