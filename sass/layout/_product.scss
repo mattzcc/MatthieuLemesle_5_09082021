@@ -127,6 +127,7 @@
 .product__button {
   justify-self: center;
   grid-area: 5 / 1 / 6 / 2;
+  cursor: pointer;
 
   @include screen-tablet {
     // grid-area: 5 / 2 / 6 / -1;
