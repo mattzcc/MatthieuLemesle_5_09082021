@@ -35,7 +35,7 @@
     padding-bottom: 0.6rem;
     transform: scale(1);
     transition: all, 200ms;
-    position: relative;
+    //position: relative;
 
 
     &:hover {
@@ -50,11 +50,12 @@
 
     &__button {
         position: absolute;
-        bottom: 50%;
-        left: 30%;
+        bottom: 35%;
+        left: 20%;
+        right: 20%;
+        text-align: center;
         visibility: hidden;
 
-        // background: linear-gradient(to bottom, lighten(#FDB99B, 5), lighten(#CD8BF3, 10));
         &--style {
             background: pink;
             border-radius: .5rem;
@@ -68,7 +69,7 @@
     &__img {
         display: block;
         width: 100%;
-        height: 80%;
+        height: 100%;
         object-fit: cover;
         border-radius: 2rem 2rem 0 0;
     }
@@ -78,4 +79,8 @@
         display: flex;
         flex-direction: column;
     }
+}
+
+.container__img {
+    height: 78%;
 }

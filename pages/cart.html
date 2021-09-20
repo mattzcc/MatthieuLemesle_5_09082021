@@ -32,89 +32,59 @@
     </header>
     <!-- Product -->
     <main class="items-list">
-        <table>
-            <thead>
-                <tr>
-                    <th>Article</th>
-                    <th>Prix</th>
-                    <th>Quantité</th>
-                    <th>Sous-total</th>
-                    <th>Supprimer</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                </tr>
-                <tr>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                </tr>
-                <tr>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                </tr>
-                <tr>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                    <td>Cellule</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="5">Total</td>
-                </tr>
-            </tfoot>
-        </table>
+        <h1 id="cart-title">Votre panier</h1>
+        <div class="cart-container cart--style">
+            <div class="cart">
+                <div class="cart__header">Article</div>
+                <div class="cart__header">Couleur</div>
+                <div class="cart__header">Quantité</div>
+                <div class="cart__header">Prix</div>
+            </div>
+            <div id="cart__content">
+            </div>
+        </div>
 
         <form id="form">
-            <div class="form__container">
+            <!-- <div class="form__container">
                 <div class="form__block"><label for="civility-select">Civilité</label>
                     <select class="form__input" name="civility" id="civility-select">
-                        <option value="">Sélectionnez</option>
-                        <option value="Monsieur">Monsieur</option>
-                        <option value="Madame">Madame</option>
-                    </select></div>
-            </div>
+                        <option selected disabled value="null">Sélectionnez</option>
+                        <option value="monsieur">Monsieur</option>
+                        <option value="madame">Madame</option>
+                    </select>
+                </div>
+            </div> -->
             <div class="form__container">
                 <div class="form__block"><label for="lastName" class="form__title">Nom</label>
-                    <input class="form__input" name="lastName" type="text" placeholder="Votre nom de famille" /></div>
+                    <input class="form__input" id="lastName" name="lastName" type="text" required
+                        placeholder="Votre nom de famille" /></div>
                 <div class="form__block"><label for="firstName" class="form__title">Prénom</label>
-                    <input class="form__input" name="firstName" type="text" placeholder="Votre prénom" /></div>
+                    <input class="form__input" id="firstName" name="firstName" type="text" required
+                        placeholder="Votre prénom" /></div>
             </div>
             <div class="form__container">
                 <div class="form__block">
                     <label for="address" class="form__title">Adresse</label>
-                    <input class="form__input" name="address" type="text"
+                    <input class="form__input" id="address" name="address" type="text" required
                         placeholder="Votre adresse" /></div>
             </div>
             <div class="form__container">
                 <div class="form__block"><label for="zipCode" class="form__title">Code Postal</label>
-                    <input class="form__input" name="zipCode" type="text" placeholder="ex: 83200" /></div>
+                    <input class="form__input" id="zipCode" name="zipCode" type="number" placeholder="ex: 83200" />
+                </div>
                 <div class="form__block"><label for="city" class="form__title">Ville</label>
-                    <input class="form__input" name="city" type="text" placeholder="Votre ville" /></div>
+                    <input class="form__input" id="city" name="city" type="text" required placeholder="Votre ville" />
+                </div>
             </div>
             <div class="form__container">
                 <div class="form__block"><label for="phone" class="form__title">Téléphone</label>
-                    <input class="form__input" name="phone" type="text" placeholder="ex: 0612345678" /></div>
+                    <input class="form__input" id="phone" name="phone" type="tel" placeholder="ex: 0612345678" /></div>
                 <div class="form__block"><label for="email" class="form__title">E-mail</label>
-                    <input class="form__input" name="email" type="text" placeholder="exemple@mail.com" /></div>
+                    <input class="form__input" id="email" name="email" type="email" required
+                        placeholder="example@mail.com" />
+                </div>
             </div>
 
-            <!-- <input name="checkbox" type="checkbox" value="1" /> J'ai lu et j'accepte les conditions générales de
-            vente.<br /> -->
             <div class="form__button"><button type="submit" value="Submit"
                     class="card__button--style">Commander</button></div>
         </form>
