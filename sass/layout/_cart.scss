@@ -146,7 +146,7 @@ label{
     &--logoChecked {
         position: absolute;
         top: 50%;
-        left: 93%;
+        left: 90%;
     }
 
 }
@@ -157,12 +157,12 @@ label{
     margin-top: 2rem;
 }
 
-.form__textAlert--green {
-    font-weight: bold;
-    color: seagreen;
-}
+// .form__textAlert--green {
+//     font-weight: bold;
+//     color: seagreen;
+// }
 
 .form__textAlert--red {
     font-weight: bold;
-    color: indianred;
+    color: #e94f5e;
 }

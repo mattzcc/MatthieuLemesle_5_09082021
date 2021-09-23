@@ -195,6 +195,7 @@ form.email.addEventListener('input', function () {
 form.email.removeEventListener('input', function () {
     validEmail(this);
 });
+
 function validEmail(inputEmail) {
 
     // Création de la RegExp 
@@ -206,12 +207,9 @@ function validEmail(inputEmail) {
     // Affichage d'un message pour l'utilisateur 
     if (checkEmail) {
         // inputEmail.style.border = '2px green solid'
-        document.querySelector('span').textContent = `✅`
-        console.log(document.querySelector('span'));
-        document.getElementById('email').textContent = `Votre adresse email est correcte`;
-        document.querySelector('span').classList.add('form__input--logoChecked')
+        document.querySelector('.form__validIcon').textContent = `✅`
+        document.querySelector('.form__validIcon').classList.add('form__input--logoChecked')
         inputEmail.classList.add('form__input--green');
-        document.getElementById('email').classList.add('form__textAlert--green');
         // document.getElementById('email').style.color = 'green'
         // document.getElementById('email').style.fontWeight = 'bold'
     } else {
@@ -224,3 +222,13 @@ function validEmail(inputEmail) {
     }
 }
 // ---- FIN REGEX EMAIL ---- //
+document.querySelectorAll('.form__input').forEach(item => {
+    item.addEventListener('mousedown', function () {
+        item.classList.remove('form__input--green', 'form__input--red');
+        console.log(item);
+    });
+});
+
+
+// Si champ nom/prénom/adresse etc == true > btn commander OK
+// Si non btn commandé bloqué
