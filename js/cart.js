@@ -9,10 +9,8 @@ if (productInLocStor == null) {
     const newEltP = document.createElement('p');
     newEltP.textContent = 'Votre panier est vide';
     selectClass.insertBefore(newEltP, selectClass.firstElementChild)
-    console.log('je suis vide')
-} else {
 
-    console.log('je ne suis pas vide')
+} else {
 
     for (let d = 0; d < productInLocStor.length; d++) {
 
@@ -65,9 +63,6 @@ if (productInLocStor == null) {
                 newEltPrice.after(newEltTrash);
                 newEltTrash.classList.add('cart__trash');
                 newEltTrash.innerHTML = `<i class="far fa-trash-alt"></i>`
-                // newEltTrash.dataset.refId = dataId;
-                // newEltTrash.dataset.refOpt = productInLocStor[d].optionProduct;
-                // modif l'elt i 
 
                 // Suppression d'un article au clic sur la corbeille
                 /* Je sélectionne l'élément sur lequel écouter l'évènement click 
@@ -114,50 +109,118 @@ function setTotalElement(totalPrice) {
 
 /* Regex champs du formulaire */
 
-// Sélection du champ Nom
-const lastNameInput = document.querySelector('#lastName');
+// Sélection du formulaire
+const form = document.getElementById('form')
 
-// Sélection du champ Prénom
-const firstNameInput = document.querySelector('#firstName');
+// ---- REGEX TELEPHONE ---- //
 
-// Sélection du champ Adresse
-const addressInput = document.querySelector('#address');
+// Ecouter la modification 
+form.phone.addEventListener('input', function () {
+    validTelephone(this);
+});
 
-// Sélection du champ Code Postal
-const zipCodeInput = document.querySelector('#zipCode');
+function validTelephone(inputTelephone) {
 
-// Sélection du champ Ville
-const cityInput = document.querySelector('#city');
+    // Création de la RegExp 
+    const telephoneRegExp = /^[0-9]{10}$/g;
 
-// Sélection du champ Téléphone
-const phoneInput = document.querySelector('#phone');
+    let checkTelephone = telephoneRegExp.test(inputTelephone.value);
+    console.log(checkTelephone);
 
-// Sélection du champ Email
-const emailInput = document.querySelector('#email');
+    // Affichage d'un message pour l'utilisateur 
+    if (checkTelephone) {
+        inputTelephone.style.border = '2px green solid'
+    } else {
+        inputTelephone.style.border = '2px red solid'
+    }
+}
+// ---- FIN REGEX TELEPHONE ---- //
 
-// Sélection de tous les champs input
-const allInputs = document.querySelectorAll('.form__input');
-//console.log(allInputs);
+// ---- REGEX VILLE ---- //
 
+// Ecouter la modification 
+form.city.addEventListener('input', function () {
+    validCity(this);
+});
 
-/*allInputs.forEach(inp => {
-    let inpValue = inp.value;
-    
-    inp.addEventListener('onChange', function (e) {
-        console.log(inpValue);
-    });
+function validCity(inputCity) {
 
-});*/
+    // Création de la RegExp 
+    const cityRegExp = /^[0-9]{10}$/g;
 
+    let checkCity = cityRegExp.test(inputCity.value);
+    console.log(checkCity);
 
-for(let input of allInputs){
-    console.log(input.value);
+    // Affichage d'un message pour l'utilisateur 
+    if (checkCity) {
+        inputCity.style.border = '2px green solid'
+    } else {
+        inputCity.style.border = '2px red solid'
+    }
+}
+// ---- FIN REGEX VILLE ---- //
 
+// ---- REGEX CODE POSTAL ---- //
 
+// Ecouter la modification du code postal
+form.zipCode.addEventListener('input', function () {
+    validZipCode(this);
+});
 
+function validZipCode(inputZipCode) {
+
+    // Création de la RegExp
+    const zipCodeRegExp = /^[0-9]{5}$/g;
+
+    let checkZipCode = zipCodeRegExp.test(inputZipCode.value);
+    console.log(checkZipCode);
+
+    // Affichage d'un message pour l'utilisateur 
+    if (checkZipCode) {
+        inputZipCode.style.border = '2px green solid'
+    } else {
+        inputZipCode.style.border = '2px red solid'
+    }
 }
 
-// Fonction pour vérifier le nom et prénom
-function checkFullName() {
-    const regexName = 
+// ---- FIN REGEX CODE POSTAL ---- //
+
+// ---- REGEX EMAIL ---- //
+
+// Ecouter la modification 
+form.email.addEventListener('input', function () {
+    validEmail(this);
+});
+
+form.email.removeEventListener('input', function () {
+    validEmail(this);
+});
+function validEmail(inputEmail) {
+
+    // Création de la RegExp 
+    let emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g;
+
+    let checkEmail = emailRegExp.test(inputEmail.value);
+    console.log(checkEmail);
+
+    // Affichage d'un message pour l'utilisateur 
+    if (checkEmail) {
+        // inputEmail.style.border = '2px green solid'
+        document.querySelector('span').textContent = `✅`
+        console.log(document.querySelector('span'));
+        document.getElementById('email').textContent = `Votre adresse email est correcte`;
+        document.querySelector('span').classList.add('form__input--logoChecked')
+        inputEmail.classList.add('form__input--green');
+        document.getElementById('email').classList.add('form__textAlert--green');
+        // document.getElementById('email').style.color = 'green'
+        // document.getElementById('email').style.fontWeight = 'bold'
+    } else {
+        // inputEmail.style.border = '2px red solid'
+        document.getElementById('email').textContent = `❌ Merci de saisir une adresse email valide ❌`;
+        inputEmail.classList.add('form__input--red');
+        document.getElementById('email').classList.add('form__textAlert--red');
+        // document.getElementById('email').style.color = 'red'
+        // document.getElementById('email').style.fontWeight = 'bold'
+    }
 }
+// ---- FIN REGEX EMAIL ---- //
