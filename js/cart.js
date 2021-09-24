@@ -112,53 +112,30 @@ function setTotalElement(totalPrice) {
 // Sélection du formulaire
 const form = document.getElementById('form')
 
-// ---- REGEX TELEPHONE ---- //
+// ---- REGEX ADRESSE ---- //
 
-// Ecouter la modification 
-form.phone.addEventListener('input', function () {
-    validTelephone(this);
+// Ecouter la modification du code postal
+form.address.addEventListener('input', function () {
+    validAddress(this);
 });
 
-function validTelephone(inputTelephone) {
+function validAddress(inputAddress) {
 
-    // Création de la RegExp 
-    const telephoneRegExp = /^[0-9]{10}$/g;
+    // Création de la RegExp
+    const addressRegExp = /^[a-zA-Z',\s-]{1,25}$/g;
 
-    let checkTelephone = telephoneRegExp.test(inputTelephone.value);
-    console.log(checkTelephone);
-
-    // Affichage d'un message pour l'utilisateur 
-    if (checkTelephone) {
-        inputTelephone.style.border = '2px green solid'
-    } else {
-        inputTelephone.style.border = '2px red solid'
-    }
-}
-// ---- FIN REGEX TELEPHONE ---- //
-
-// ---- REGEX VILLE ---- //
-
-// Ecouter la modification 
-form.city.addEventListener('input', function () {
-    validCity(this);
-});
-
-function validCity(inputCity) {
-
-    // Création de la RegExp 
-    const cityRegExp = /^[0-9]{10}$/g;
-
-    let checkCity = cityRegExp.test(inputCity.value);
-    console.log(checkCity);
+    let checkAddress = addressRegExp.test(inputAddress.value);
+    console.log(checkAddress);
 
     // Affichage d'un message pour l'utilisateur 
-    if (checkCity) {
-        inputCity.style.border = '2px green solid'
+    if (checkAddress) {
+        inputAddress.style.border = '2px green solid'
     } else {
-        inputCity.style.border = '2px red solid'
+        inputAddress.style.border = '2px red solid'
     }
 }
-// ---- FIN REGEX VILLE ---- //
+
+// ---- FIN REGEX ADRESSE ---- //
 
 // ---- REGEX CODE POSTAL ---- //
 
@@ -184,6 +161,54 @@ function validZipCode(inputZipCode) {
 }
 
 // ---- FIN REGEX CODE POSTAL ---- //
+
+// ---- REGEX VILLE ---- //
+
+// Ecouter la modification 
+form.city.addEventListener('input', function () {
+    validCity(this);
+});
+
+function validCity(inputCity) {
+
+    // Création de la RegExp 
+    const cityRegExp = /^[a-zA-Z'\s-]{1,25}$/g; 
+
+    let checkCity = cityRegExp.test(inputCity.value);
+    console.log(checkCity);
+
+    // Affichage d'un message pour l'utilisateur 
+    if (checkCity) {
+        inputCity.style.border = '2px green solid'
+    } else {
+        inputCity.style.border = '2px red solid'
+    }
+}
+// ---- FIN REGEX VILLE ---- //
+
+// ---- REGEX TELEPHONE ---- //
+
+// Ecouter la modification 
+form.phone.addEventListener('input', function () {
+    validTelephone(this);
+});
+
+function validTelephone(inputTelephone) {
+
+    // Création de la RegExp 
+    const telephoneRegExp = /^[0-9]{10}$/g;
+
+    let checkTelephone = telephoneRegExp.test(inputTelephone.value);
+    console.log(checkTelephone);
+
+    // Affichage d'un message pour l'utilisateur 
+    if (checkTelephone) {
+        inputTelephone.style.border = '2px green solid'
+    } else {
+        inputTelephone.style.border = '2px red solid'
+    }
+}
+// ---- FIN REGEX TELEPHONE ---- //
 
 // ---- REGEX EMAIL ---- //
 
