@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta content="To be completed" name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="./img/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,74 @@
     <script src="../js/app.js" defer></script>
     <title>OriTeddy by Orinoco</title>
 </head>
+
 <body>
-    
+    <!-- Header -->
+    <header class="header">
+        <a href="../index.html" class="header__logo header__logo--color">OriTeddy</a>
+        <a href="./cart.html" class="header__cartContainer header__cartContainer--color">
+            <span class="header__cartName">Panier</span>
+            <i class="fas fa-shopping-cart header__cartIcon"></i>
+        </a>
+    </header>
+    <!-- Order confirmation -->
+    <main class="items-list">
+        <h1 id="title-order-confirmation">Merci pour votre commande !</h1>
+        <div class="order-confirmation-img">
+            <img src="../img/teddy-day.svg" alt="Image d'une femme heureuse avec un ours en peluche dans les bras">
+        </div>
+        <div class="confirmation-details">
+            <p>Votre commande porte le numéro <span id="confirmation-details__id"
+                    class="confirmation-details--style">xxx</span> pour un montant total de <span
+                    id="confirmation-details__price" class="confirmation-details--style">xxx</span></p>
+            <p>Nos équipes mettent tout en oeuvre pour que vous la receviez dans les meilleurs délais.</p>
+            <p>A très bientôt sur OriTeddy !</p>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__block">
+            <h3 class="footer__title">Suivez-nous</h3>
+            <a href="#" class="footer__link footer__link--color">
+                <i class="fab fa-facebook footer__socialIcon"></i>
+                <div class="footer__linkName">Facebook</div>
+            </a>
+            <a href="#" class="footer__link footer__link--color">
+                <i class="fab fa-instagram footer__socialIcon"></i>
+                <div class="footer__linkName">Instagram</div>
+            </a>
+            <a href="#" class="footer__link footer__link--color">
+                <i class="fab fa-twitter footer__socialIcon"></i>
+                <div class="footer__linkName">Twitter</div>
+            </a>
+        </div>
+        <hr class="separation-line">
+        <div class="footer__block">
+            <h3 class="footer__title">Service Clients</h3>
+            <a href="mailto:contact@oriteddy.com" class="footer__link footer__link--color">
+                <div class="footer__linkName">Contactez-nous</div>
+            </a>
+            <a href="" class="footer__link footer__link--color">
+                <div class="footer__linkName">Statut de commande</div>
+            </a>
+            <a href="" class="footer__link footer__link--color">
+                <div class="footer__linkName">Échanges et retours</div>
+            </a>
+            <a href="" class="footer__link footer__link--color">
+                <div class="footer__linkName">FAQ</div>
+            </a>
+        </div>
+        <hr class="separation-line">
+        <div class="footer__block">
+            <h3 class="footer__title">À Propos</h3>
+            <a href="" class="footer__link footer__link--color">
+                <div class="footer__linkName">Qui sommes-nous ?</div>
+            </a>
+            <a href="" class="footer__link footer__link--color">
+                <div class="footer__linkName">Blog</div>
+            </a>
+        </div>
+    </footer>
 </body>
+
 </html>

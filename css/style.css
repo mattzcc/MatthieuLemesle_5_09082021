@@ -606,6 +606,30 @@ label{
   color: #e94f5e;
 }
 
+.items-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.order-confirmation-img {
+  width: 20%;
+  margin: 0 auto;
+}
+
+.confirmation-details {
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 3rem;
+}
+.confirmation-details--style {
+  background-color: white;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  font-weight: bold;
+  border: 1px solid pink;
+}
+
 .btn-nav {
   text-decoration: none;
   background-color: #321d62;

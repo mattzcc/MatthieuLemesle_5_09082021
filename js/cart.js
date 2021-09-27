@@ -113,7 +113,7 @@ function setTotalElement(totalPrice) {
 const form = document.getElementById('form')
 
 // ---- REGEX TELEPHONE ---- //
-
+let boolValueTelephone;
 // Ecouter la modification 
 form.phone.addEventListener('input', function () {
     validTelephone(this);
@@ -130,13 +130,18 @@ function validTelephone(inputTelephone) {
     // Affichage d'un message pour l'utilisateur 
     if (checkTelephone) {
         inputTelephone.style.border = '2px green solid'
+        return true;
     } else {
         inputTelephone.style.border = '2px red solid'
+        return false;
     }
 }
+
+boolValueTelephone = validTelephone(form.phone);
 // ---- FIN REGEX TELEPHONE ---- //
 
 // ---- REGEX VILLE ---- //
+let boolValueCity;
 
 // Ecouter la modification 
 form.city.addEventListener('input', function () {
@@ -146,7 +151,7 @@ form.city.addEventListener('input', function () {
 function validCity(inputCity) {
 
     // Création de la RegExp 
-    const cityRegExp = /^[0-9]{10}$/g;
+    const cityRegExp = /^[a-zA-Z',.\s-]{1,25}$/g;
 
     let checkCity = cityRegExp.test(inputCity.value);
     console.log(checkCity);
@@ -154,14 +159,19 @@ function validCity(inputCity) {
     // Affichage d'un message pour l'utilisateur 
     if (checkCity) {
         inputCity.style.border = '2px green solid'
+        return true;
     } else {
         inputCity.style.border = '2px red solid'
+        return false;
     }
 }
+
+boolValueCity = validCity(form.city);
+
 // ---- FIN REGEX VILLE ---- //
 
 // ---- REGEX CODE POSTAL ---- //
-
+let boolValueZipCode;
 // Ecouter la modification du code postal
 form.zipCode.addEventListener('input', function () {
     validZipCode(this);
@@ -178,30 +188,31 @@ function validZipCode(inputZipCode) {
     // Affichage d'un message pour l'utilisateur 
     if (checkZipCode) {
         inputZipCode.style.border = '2px green solid'
+        return true;
     } else {
         inputZipCode.style.border = '2px red solid'
+        return false;
     }
 }
+
+boolValueZipCode = validZipCode(form.zipCode);
 
 // ---- FIN REGEX CODE POSTAL ---- //
 
 // ---- REGEX EMAIL ---- //
-
+let boolValueEmail;
 // Ecouter la modification 
 form.email.addEventListener('input', function () {
     validEmail(this);
 });
-
-form.email.removeEventListener('input', function () {
-    validEmail(this);
-});
+let checkEmail;
 
 function validEmail(inputEmail) {
 
     // Création de la RegExp 
     let emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g;
 
-    let checkEmail = emailRegExp.test(inputEmail.value);
+    checkEmail = emailRegExp.test(inputEmail.value);
     console.log(checkEmail);
 
     // Affichage d'un message pour l'utilisateur 
@@ -212,6 +223,7 @@ function validEmail(inputEmail) {
         inputEmail.classList.add('form__input--green');
         // document.getElementById('email').style.color = 'green'
         // document.getElementById('email').style.fontWeight = 'bold'
+        return true;
     } else {
         // inputEmail.style.border = '2px red solid'
         document.getElementById('email').textContent = `❌ Merci de saisir une adresse email valide ❌`;
@@ -219,16 +231,84 @@ function validEmail(inputEmail) {
         document.getElementById('email').classList.add('form__textAlert--red');
         // document.getElementById('email').style.color = 'red'
         // document.getElementById('email').style.fontWeight = 'bold'
+        return false;
     }
 }
+
+boolValueEmail = validEmail(form.email);
+
 // ---- FIN REGEX EMAIL ---- //
 document.querySelectorAll('.form__input').forEach(item => {
     item.addEventListener('mousedown', function () {
         item.classList.remove('form__input--green', 'form__input--red');
-        console.log(item);
     });
 });
 
+console.log(boolValueEmail);
+// ------------- POST REQUEST --------------- //
 
-// Si champ nom/prénom/adresse etc == true > btn commander OK
-// Si non btn commandé bloqué
+const orderBtn = document.getElementById('order-btn');
+
+
+orderBtn.addEventListener('click', e => {
+    e.preventDefault();
+
+    let lastName = form.lastName.value;
+    let firstName = form.firstName.value;
+    let address = form.address.value;
+    let city = form.city.value;
+    let email = form.email.value;
+
+    // Ajout condition Si champ nom/prénom/adresse etc == true > btn commander OK / Si non btn commandé bloqué
+    // if ((boolValueCity) && (boolValueTelephone) && (boolValueZipCode) && (boolValueEmail)) {
+
+    let contact = {
+        lastName: lastName,
+        firstName: firstName,
+        address: address,
+        city: city,
+        email: email
+    }
+
+    console.log(contact);
+
+    //   }
+
+    function getFields(list, field) {
+        //  reduce the provided list to an array only containing the requested field
+        return list.reduce(function (carry, item) {
+            //  check if the item is actually an object and does contain the field
+            if (typeof item === 'object' && field in item) {
+                carry.push(item[field]);
+            }
+
+            //  return the 'carry' (which is the list of matched field values)
+            return carry;
+        }, []);
+    }
+
+    let products = getFields(productInLocStor, 'productId');
+    console.log(products);
+
+    // Création de l'objet à envoyer au serveur
+    const sendToServer = {
+        contact,
+        products
+    };
+
+    // Envoi de l'objet vers le serveur
+    fetch('http://localhost:3000/api/teddies/order', {
+            method: "POST",
+            body: JSON.stringify(sendToServer),
+            headers: {
+                "Content-Type": "application/json"
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.orderId)
+            window.location = '/pages/confirmation.html?' + data.orderId
+        });
+
+
+});
