@@ -82,6 +82,8 @@ if (productInLocStor == null) {
 
                 // Appel de la fonction avec la variable total en paramètre
                 setTotalElement(total);
+                // Stockage du prix total dans le localStorage pour affichage sur la page confirmation.html
+                localStorage.setItem('displayTotalPrice', JSON.stringify((total / 100).toFixed(2) + ' €'))
             });
 
     };
@@ -107,149 +109,12 @@ function setTotalElement(totalPrice) {
     document.getElementsByClassName('total__price')[0].textContent = (totalPrice / 100).toFixed(2) + ' €';
 }
 
-/* Regex champs du formulaire */
+// ------------- VALIDATION FORMULAIRE --------------- //
 
-// Sélection du formulaire
-const form = document.getElementById('form')
-
-// ---- REGEX TELEPHONE ---- //
-let boolValueTelephone;
-// Ecouter la modification 
-form.phone.addEventListener('input', function () {
-    validTelephone(this);
-});
-
-function validTelephone(inputTelephone) {
-
-    // Création de la RegExp 
-    const telephoneRegExp = /^[0-9]{10}$/g;
-
-    let checkTelephone = telephoneRegExp.test(inputTelephone.value);
-    console.log(checkTelephone);
-
-    // Affichage d'un message pour l'utilisateur 
-    if (checkTelephone) {
-        inputTelephone.style.border = '2px green solid'
-        return true;
-    } else {
-        inputTelephone.style.border = '2px red solid'
-        return false;
-    }
-}
-
-boolValueTelephone = validTelephone(form.phone);
-// ---- FIN REGEX TELEPHONE ---- //
-
-// ---- REGEX VILLE ---- //
-let boolValueCity;
-
-// Ecouter la modification 
-form.city.addEventListener('input', function () {
-    validCity(this);
-});
-
-function validCity(inputCity) {
-
-    // Création de la RegExp 
-    const cityRegExp = /^[a-zA-Z',.\s-]{1,25}$/g;
-
-    let checkCity = cityRegExp.test(inputCity.value);
-    console.log(checkCity);
-
-    // Affichage d'un message pour l'utilisateur 
-    if (checkCity) {
-        inputCity.style.border = '2px green solid'
-        return true;
-    } else {
-        inputCity.style.border = '2px red solid'
-        return false;
-    }
-}
-
-boolValueCity = validCity(form.city);
-
-// ---- FIN REGEX VILLE ---- //
-
-// ---- REGEX CODE POSTAL ---- //
-let boolValueZipCode;
-// Ecouter la modification du code postal
-form.zipCode.addEventListener('input', function () {
-    validZipCode(this);
-});
-
-function validZipCode(inputZipCode) {
-
-    // Création de la RegExp
-    const zipCodeRegExp = /^[0-9]{5}$/g;
-
-    let checkZipCode = zipCodeRegExp.test(inputZipCode.value);
-    console.log(checkZipCode);
-
-    // Affichage d'un message pour l'utilisateur 
-    if (checkZipCode) {
-        inputZipCode.style.border = '2px green solid'
-        return true;
-    } else {
-        inputZipCode.style.border = '2px red solid'
-        return false;
-    }
-}
-
-boolValueZipCode = validZipCode(form.zipCode);
-
-// ---- FIN REGEX CODE POSTAL ---- //
-
-// ---- REGEX EMAIL ---- //
-let boolValueEmail;
-// Ecouter la modification 
-form.email.addEventListener('input', function () {
-    validEmail(this);
-});
-let checkEmail;
-
-function validEmail(inputEmail) {
-
-    // Création de la RegExp 
-    let emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g;
-
-    checkEmail = emailRegExp.test(inputEmail.value);
-    console.log(checkEmail);
-
-    // Affichage d'un message pour l'utilisateur 
-    if (checkEmail) {
-        // inputEmail.style.border = '2px green solid'
-        document.querySelector('.form__validIcon').textContent = `✅`
-        document.querySelector('.form__validIcon').classList.add('form__input--logoChecked')
-        inputEmail.classList.add('form__input--green');
-        // document.getElementById('email').style.color = 'green'
-        // document.getElementById('email').style.fontWeight = 'bold'
-        return true;
-    } else {
-        // inputEmail.style.border = '2px red solid'
-        document.getElementById('email').textContent = `❌ Merci de saisir une adresse email valide ❌`;
-        inputEmail.classList.add('form__input--red');
-        document.getElementById('email').classList.add('form__textAlert--red');
-        // document.getElementById('email').style.color = 'red'
-        // document.getElementById('email').style.fontWeight = 'bold'
-        return false;
-    }
-}
-
-boolValueEmail = validEmail(form.email);
-
-// ---- FIN REGEX EMAIL ---- //
-document.querySelectorAll('.form__input').forEach(item => {
-    item.addEventListener('mousedown', function () {
-        item.classList.remove('form__input--green', 'form__input--red');
-    });
-});
-
-console.log(boolValueEmail);
-// ------------- POST REQUEST --------------- //
-
+// Sélection du bouton Commander
 const orderBtn = document.getElementById('order-btn');
 
-
+// Écoute de l'évènement click sur le bouton commander
 orderBtn.addEventListener('click', e => {
     e.preventDefault();
 
@@ -258,57 +123,157 @@ orderBtn.addEventListener('click', e => {
     let address = form.address.value;
     let city = form.city.value;
     let email = form.email.value;
+    let zipCode = form.zipCode.value;
+    let phone = form.phone.value;
 
-    // Ajout condition Si champ nom/prénom/adresse etc == true > btn commander OK / Si non btn commandé bloqué
-    // if ((boolValueCity) && (boolValueTelephone) && (boolValueZipCode) && (boolValueEmail)) {
 
-    let contact = {
-        lastName: lastName,
-        firstName: firstName,
-        address: address,
-        city: city,
-        email: email
-    }
+    // Création de la RegExp Nom et Prénom
+    const lastNameRegExp = /^[a-zA-Z-'\s]*?$/g;
+    const firstNameRegExp = /^[a-zA-Z-']*?$/g;
+    const zipCodeRegExp = /^[0-9]{5}$/g;
+    const phoneRegExp = /^[0-9]{10}$/g;
+    const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g;
 
-    console.log(contact);
 
-    //   }
 
-    function getFields(list, field) {
-        //  reduce the provided list to an array only containing the requested field
-        return list.reduce(function (carry, item) {
-            //  check if the item is actually an object and does contain the field
-            if (typeof item === 'object' && field in item) {
-                carry.push(item[field]);
-            }
+    function testEmptyInput(regExp, input, inp, smallId) {
+        // Si un champ est vide
+        if (input) {
+           
+           return testInputValue(regExp, input, inp, smallId);
 
-            //  return the 'carry' (which is the list of matched field values)
-            return carry;
-        }, []);
-    }
-
-    let products = getFields(productInLocStor, 'productId');
-    console.log(products);
-
-    // Création de l'objet à envoyer au serveur
-    const sendToServer = {
-        contact,
-        products
+        } else {
+            console.log(`${input} EMPTY`);
+            
+           return alert('Merci de remplir tous les champs du formulaire.');
+        }
     };
 
-    // Envoi de l'objet vers le serveur
-    fetch('http://localhost:3000/api/teddies/order', {
-            method: "POST",
-            body: JSON.stringify(sendToServer),
-            headers: {
-                "Content-Type": "application/json"
-            },
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data.orderId)
-            window.location = '/pages/confirmation.html?' + data.orderId
-        });
 
 
+
+    function testInputValue(regExp, input, inp, smallId) {
+
+        // Si valeur de l'input renseignée par l'utilisateur est true
+        if (regExp.test(input)) {
+            console.log(`${input} OK`);
+         //   return true;
+        } else { // Si l'entrée utilisateur est fausse
+            console.log(`NOT OK`);
+            displayNotValidInput(inp, smallId);
+         //   return false;
+        };
+    };
+
+    // Fonction pour affichage utilisateur
+    function displayNotValidInput(inp, smallId) {
+        inp.classList.add('form__input--red');
+        document.getElementById(`${smallId}`).classList.add('form__textAlert--red');
+    };
+
+
+
+
+    if (productInLocStor) {
+        //  if (testInputValue(lastNameRegExp, lastName, form.lastName) && testInputValue(firstNameRegExp, firstName, form.firstName) && testInputValue(zipCodeRegExp, zipCode, form.zipCode) && testInputValue(phoneRegExp, phone, form.phone) && testInputValue(emailRegExp, email, form.email)) {
+
+        function doPostRequest() {
+            // Création de l'objet contact pour y stocker les valeurs du formulaires remplies par l'utilisateur
+            let contact = {
+                lastName: lastName,
+                firstName: firstName,
+                address: address,
+                city: city,
+                email: email
+            };
+
+            // Création d'un tableau avec les ID des produits présents dans le localStorage
+            let products = [];
+            for (item of productInLocStor) {
+
+                products.push(item.productId);
+
+            }
+            console.log(products);
+
+
+            // Création de l'objet à envoyer au serveur
+            const sendToServer = {
+                contact,
+                products
+            };
+            // ------------- POST REQUEST --------------- //
+            // Envoi de l'objet vers le serveur
+            fetch('http://localhost:3000/api/teddies/order', {
+                    method: "POST",
+                    body: JSON.stringify(sendToServer),
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.orderId);
+                    window.location = '/pages/confirmation.html?orderId=' + data.orderId;
+                });
+
+        };
+
+        // } else {
+        //    alert('Veuillez vérifier votre formulaire.')
+        // }
+
+
+        // test appel fonction sur les champs individuellement
+
+        if (testEmptyInput(lastNameRegExp, lastName, form.lastName, 'lastName')) {
+            document.getElementById('lastName').textContent = `Votre nom ne doit pas contenir de chiffres ou de caractères spéciaux.`;
+        } else {
+            return;
+        };
+
+        if (testEmptyInput(firstNameRegExp, firstName, form.firstName, 'firstName')) {
+            document.getElementById('firstName').textContent = `Votre prénom ne doit pas contenir de chiffres ou de caractères spéciaux.`;
+        } else {
+            return;
+        };
+
+        if (testEmptyInput(zipCodeRegExp, zipCode, form.zipCode, 'zipCode')) {
+            document.getElementById('zipCode').textContent = `Votre code postal doit contenir 5 chiffres.`;
+        } else {
+
+            return;
+        };
+
+        if (testEmptyInput(phoneRegExp, phone, form.phone, 'phone')) {
+            document.getElementById('phone').textContent = `Votre numéro de téléphone doit être composé de 10 chiffres.`;
+        } else {
+
+            return;
+        };
+
+        if (testEmptyInput(emailRegExp, email, form.email, 'email')) {
+            document.getElementById('email').textContent = `Votre adresse email est incorrecte.`;
+        } else {
+            return;
+        };
+
+        // if (testInputValue(lastNameRegExp, lastName, form.lastName) && testInputValue(firstNameRegExp, firstName, form.firstName) && testInputValue(zipCodeRegExp, zipCode, form.zipCode) && testInputValue(phoneRegExp, phone, form.phone) && testInputValue(emailRegExp, email, form.email)) {
+        //     doPostRequest();
+        // };
+
+
+
+    } else {
+        alert('Votre panier est vide. \nVous ne pouvez pas valider votre commande.')
+    };
 });
+form.lastName.addEventListener('onkeypress', function (e) {
+    console.log('KeyPress');
+    form.lastName.classList.add('form__input--red');
+});
+
+// Si le panier est vide et que le formulaire est correct > Alert Votre Panier est vide
+// Si le panier est vide et que le formulaire est incorrect > Alert Votre Panier est vide
+// Si le panier n'est pas vide et que le forumnaire est correct > Envoi des données
+// Si le panier n'est pas vide et que le forumnaire est incorrect > Alert Merci Vérifier formulaire

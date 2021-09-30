@@ -602,23 +602,29 @@ label{
 }
 
 .form__textAlert--red {
+  font-size: 0.8em;
   font-weight: bold;
-  color: #e94f5e;
+  color: red;
 }
 
-.items-list {
+.order-confirmation-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 .order-confirmation-img {
-  width: 20%;
-  margin: 0 auto;
+  width: 60%;
+  padding: 1rem 0;
+}
+@media screen and (min-width: 768px) {
+  .order-confirmation-img {
+    width: 30%;
+  }
 }
 
 .confirmation-details {
-  text-align: center;
   font-size: 1.2em;
   line-height: 3rem;
 }
