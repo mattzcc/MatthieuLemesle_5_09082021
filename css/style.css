@@ -602,8 +602,38 @@ label{
 }
 
 .form__textAlert--red {
+  font-size: 0.8em;
   font-weight: bold;
-  color: #e94f5e;
+  color: red;
+}
+
+.order-confirmation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.order-confirmation-img {
+  width: 60%;
+  padding: 1rem 0;
+}
+@media screen and (min-width: 768px) {
+  .order-confirmation-img {
+    width: 30%;
+  }
+}
+
+.confirmation-details {
+  font-size: 1.2em;
+  line-height: 3rem;
+}
+.confirmation-details--style {
+  background-color: white;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  font-weight: bold;
+  border: 1px solid pink;
 }
 
 .btn-nav {
