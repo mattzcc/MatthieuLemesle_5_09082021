@@ -45,57 +45,47 @@
         </div>
 
         <form id="form">
-            <!-- <div class="form__container">
-                <div class="form__block"><label for="civility-select">Civilité</label>
-                    <select class="form__input" name="civility" id="civility-select">
-                        <option selected disabled value="null">Sélectionnez</option>
-                        <option value="monsieur">Monsieur</option>
-                        <option value="madame">Madame</option>
-                    </select>
-                </div>
-            </div> -->
             <div class="form__container">
                 <div class="form__block"><label for="lastName" class="form__title">Nom</label>
                     <input class="form__input" name="lastName" type="text" required
                         placeholder="Votre nom de famille" />
-                    <small id="lastName"></small>
+                    <small id="lastName" class="form__textAlert--red"></small>
                 </div>
                 <div class="form__block"><label for="firstName" class="form__title">Prénom</label>
                     <input class="form__input" name="firstName" type="text" required placeholder="Votre prénom" />
-                    <small id="firstName"></small>
+                    <small id="firstName" class="form__textAlert--red"></small>
                 </div>
             </div>
             <div class="form__container">
                 <div class="form__block">
                     <label for="address" class="form__title">Adresse</label>
                     <input class="form__input" name="address" type="text" required placeholder="Votre adresse" />
-                    <small id="address"></small>
+                    <small id="address" class="form__textAlert--red"></small>
                 </div>
             </div>
             <div class="form__container">
                 <div class="form__block"><label for="zipCode" class="form__title">Code Postal</label>
-                    <input class="form__input" name="zipCode" type="number" placeholder="ex: 83200" />
-                    <small id="zipCode"></small>
+                    <input class="form__input" name="zipCode" type="number" required placeholder="ex: 83200" />
+                    <small id="zipCode" class="form__textAlert--red"></small>
                 </div>
                 <div class="form__block"><label for="city" class="form__title">Ville</label>
                     <input class="form__input" name="city" type="text" required placeholder="Votre ville" />
-                    <small id="city"></small>
+                    <small id="city" class="form__textAlert--red"></small>
                 </div>
             </div>
             <div class="form__container">
                 <div class="form__block"><label for="phone" class="form__title">Téléphone</label>
-                    <input class="form__input" name="phone" type="tel" placeholder="ex: 0612345678" />
-                    <small id="phone"></small>
+                    <input class="form__input" name="phone" type="tel" required placeholder="ex: 0612345678" />
+                    <small id="phone" class="form__textAlert--red"></small>
                 </div>
                 <div class="form__block"><label for="email" class="form__title">E-mail</label>
                     <input class="form__input" name="email" type="email" required placeholder="example@mail.com" />
-                    <span class="form__validIcon"></span>
-                    <small id="email"></small>
+                    <small id="email" class="form__textAlert--red"></small>
                 </div>
             </div>
 
-            <div class="form__button"><button type="submit" value="Submit"
-                    id="order-btn" class="card__button--style">Commander</button></div>
+            <div class="form__button"><button type="submit" value="Submit" id="order-btn"
+                    class="card__button--style">Commander</button></div>
         </form>
     </main>
     <!-- Footer -->

@@ -589,11 +589,6 @@ label{
 .form__input--red {
   border: red 2px solid;
 }
-.form__input--logoChecked {
-  position: absolute;
-  top: 50%;
-  left: 90%;
-}
 
 .form__button {
   display: flex;

@@ -110,6 +110,19 @@ function setTotalElement(totalPrice) {
 }
 
 // ------------- VALIDATION FORMULAIRE --------------- //
+// Tous les champs input
+let allInputs = document.querySelectorAll('.form__input');
+
+allInputs.forEach(input => {
+    input.addEventListener('focus', () => {
+        clearInput(input);
+    })
+});
+
+function clearInput(input) {
+    input.classList.remove('form__input--red');
+    input.nextElementSibling.textContent = ``
+}
 
 // Sélection du bouton Commander
 const orderBtn = document.getElementById('order-btn');
@@ -118,73 +131,115 @@ const orderBtn = document.getElementById('order-btn');
 orderBtn.addEventListener('click', e => {
     e.preventDefault();
 
-    let lastName = form.lastName.value;
-    let firstName = form.firstName.value;
-    let address = form.address.value;
-    let city = form.city.value;
-    let email = form.email.value;
-    let zipCode = form.zipCode.value;
-    let phone = form.phone.value;
-
-
-    // Création de la RegExp Nom et Prénom
-    const lastNameRegExp = /^[a-zA-Z-'\s]*?$/g;
-    const firstNameRegExp = /^[a-zA-Z-']*?$/g;
-    const zipCodeRegExp = /^[0-9]{5}$/g;
-    const phoneRegExp = /^[0-9]{10}$/g;
-    const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g;
-
-
-
-    function testEmptyInput(regExp, input, inp, smallId) {
-        // Si un champ est vide
-        if (input) {
-           
-           return testInputValue(regExp, input, inp, smallId);
-
-        } else {
-            console.log(`${input} EMPTY`);
-            
-           return alert('Merci de remplir tous les champs du formulaire.');
-        }
-    };
-
-
-
-
-    function testInputValue(regExp, input, inp, smallId) {
-
-        // Si valeur de l'input renseignée par l'utilisateur est true
-        if (regExp.test(input)) {
-            console.log(`${input} OK`);
-         //   return true;
-        } else { // Si l'entrée utilisateur est fausse
-            console.log(`NOT OK`);
-            displayNotValidInput(inp, smallId);
-         //   return false;
-        };
-    };
-
-    // Fonction pour affichage utilisateur
-    function displayNotValidInput(inp, smallId) {
-        inp.classList.add('form__input--red');
-        document.getElementById(`${smallId}`).classList.add('form__textAlert--red');
-    };
-
-
-
 
     if (productInLocStor) {
-        //  if (testInputValue(lastNameRegExp, lastName, form.lastName) && testInputValue(firstNameRegExp, firstName, form.firstName) && testInputValue(zipCodeRegExp, zipCode, form.zipCode) && testInputValue(phoneRegExp, phone, form.phone) && testInputValue(emailRegExp, email, form.email)) {
+
+        let lastName = form.lastName;
+        let firstName = form.firstName;
+        let address = form.address;
+        let city = form.city;
+        let email = form.email;
+        let zipCode = form.zipCode;
+        let phone = form.phone;
+
+
+        // Création de la RegExp Nom et Prénom
+        const lastNameRegExp = /^[a-zA-Z-'\s]*?$/g;
+        const firstNameRegExp = /^[a-zA-Z-'\s]*?$/g;
+        const addressRegExp = /^[a-zA-Z0-9-'()\s\/,]*?$/g;
+        const zipCodeRegExp = /^[0-9]{5}$/g;
+        const cityRegExp = /^[a-zA-Z-'\s]*?$/g;
+        const phoneRegExp = /^[0-9]{10}$/g;
+        const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g;
+
+
+        let b = 0;
+
+        function checkInputValue(regExp, input) {
+
+            if (regExp.test(input.value)) {
+                return b += 1;
+            } else {
+                input.classList.add('form__input--red');
+                return false;
+            };
+        };
+
+
+        if (!checkInputValue(lastNameRegExp, lastName)) {
+            document.getElementById('lastName').textContent = `Votre nom ne doit pas contenir de chiffres ou caractères spéciaux.`
+            console.log('NOT OK');
+        };
+
+        if (!checkInputValue(firstNameRegExp, firstName)) {
+            document.getElementById('firstName').textContent = `Votre prénom ne doit pas contenir de chiffres ou caractères spéciaux.`
+            console.log('NOT OK');
+        };
+
+        if (!checkInputValue(addressRegExp, address)) {
+            document.getElementById('address').textContent = `Votre adresse ne doit pas contenir de caractères spéciaux.`
+            console.log('NOT OK');
+        };
+
+        if (!checkInputValue(zipCodeRegExp, zipCode)) {
+            document.getElementById('zipCode').textContent = `Votre code postal doit être composé de 5 chiffres.`
+            console.log('NOT OK');
+        };
+
+        if (!checkInputValue(cityRegExp, city)) {
+            document.getElementById('city').textContent = `Votre ville ne doit pas contenir de chiffres ou caractères spéciaux.`
+            console.log('NOT OK');
+        };
+
+        if (!checkInputValue(phoneRegExp, phone)) {
+            document.getElementById('phone').textContent = `Votre numéro de téléphone doit être composé de 10 chiffres.`
+            console.log('NOT OK');
+        };
+
+        if (!checkInputValue(emailRegExp, email)) {
+            document.getElementById('email').textContent = `Votre adresse email est incorrecte.`
+            console.log('NOT OK');
+        };
+
+        console.log(b);
+
+        let valid = true;
+
+        allInputs.forEach(input => {
+            if (!checkEmptyInput(input)) {
+                valid = false;
+            }
+        });
+
+        if (valid && b === 7) {
+            console.log(`Well done !`);
+            doPostRequest();
+        };
+
+
+        function checkEmptyInput(input) {
+            if (input.checkValidity()) {
+                return true;
+            } else {
+                displayNotValidInput(input);
+                return false;
+            }
+        };
+
+        // Fonction pour affichage utilisateur
+        function displayNotValidInput(input) {
+            input.classList.add('form__input--red');
+            input.nextElementSibling.textContent = `Merci de compléter ce champ.`
+        };
 
         function doPostRequest() {
             // Création de l'objet contact pour y stocker les valeurs du formulaires remplies par l'utilisateur
             let contact = {
-                lastName: lastName,
-                firstName: firstName,
-                address: address,
-                city: city,
-                email: email
+                lastName: lastName.value,
+                firstName: firstName.value,
+                address: address.value,
+                city: city.value,
+                email: email.value
             };
 
             // Création d'un tableau avec les ID des produits présents dans le localStorage
@@ -219,61 +274,7 @@ orderBtn.addEventListener('click', e => {
 
         };
 
-        // } else {
-        //    alert('Veuillez vérifier votre formulaire.')
-        // }
-
-
-        // test appel fonction sur les champs individuellement
-
-        if (testEmptyInput(lastNameRegExp, lastName, form.lastName, 'lastName')) {
-            document.getElementById('lastName').textContent = `Votre nom ne doit pas contenir de chiffres ou de caractères spéciaux.`;
-        } else {
-            return;
-        };
-
-        if (testEmptyInput(firstNameRegExp, firstName, form.firstName, 'firstName')) {
-            document.getElementById('firstName').textContent = `Votre prénom ne doit pas contenir de chiffres ou de caractères spéciaux.`;
-        } else {
-            return;
-        };
-
-        if (testEmptyInput(zipCodeRegExp, zipCode, form.zipCode, 'zipCode')) {
-            document.getElementById('zipCode').textContent = `Votre code postal doit contenir 5 chiffres.`;
-        } else {
-
-            return;
-        };
-
-        if (testEmptyInput(phoneRegExp, phone, form.phone, 'phone')) {
-            document.getElementById('phone').textContent = `Votre numéro de téléphone doit être composé de 10 chiffres.`;
-        } else {
-
-            return;
-        };
-
-        if (testEmptyInput(emailRegExp, email, form.email, 'email')) {
-            document.getElementById('email').textContent = `Votre adresse email est incorrecte.`;
-        } else {
-            return;
-        };
-
-        // if (testInputValue(lastNameRegExp, lastName, form.lastName) && testInputValue(firstNameRegExp, firstName, form.firstName) && testInputValue(zipCodeRegExp, zipCode, form.zipCode) && testInputValue(phoneRegExp, phone, form.phone) && testInputValue(emailRegExp, email, form.email)) {
-        //     doPostRequest();
-        // };
-
-
-
     } else {
         alert('Votre panier est vide. \nVous ne pouvez pas valider votre commande.')
     };
 });
-form.lastName.addEventListener('onkeypress', function (e) {
-    console.log('KeyPress');
-    form.lastName.classList.add('form__input--red');
-});
-
-// Si le panier est vide et que le formulaire est correct > Alert Votre Panier est vide
-// Si le panier est vide et que le formulaire est incorrect > Alert Votre Panier est vide
-// Si le panier n'est pas vide et que le forumnaire est correct > Envoi des données
-// Si le panier n'est pas vide et que le forumnaire est incorrect > Alert Merci Vérifier formulaire
