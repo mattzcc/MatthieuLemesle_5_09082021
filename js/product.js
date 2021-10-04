@@ -2,6 +2,13 @@
 let urlId = new URL(window.location.href);
 // Récupération de l'ID du produit dans l'URL
 let urlProductId = urlId.searchParams.get('_id');
+//Vérifier si localstorage est vide ou contient des données 
+let productInLocStor = JSON.parse(localStorage.getItem('product'));
+
+let totalQty = 0;
+
+// Sélection du bouton "Ajouter au panier"
+const addCart = document.querySelector('.product__button');
 
 // Requête API via l'ID du produit (contenu dans l'URL)
 fetch('http://localhost:3000/api/teddies/' + urlProductId)
@@ -38,15 +45,16 @@ fetch('http://localhost:3000/api/teddies/' + urlProductId)
 
 
         const productOption = document.querySelector('#color-select');
-        const addCart = document.querySelector('.product__button');
+        
         //Evenement au clic sur le bouton Ajouter au panier
         addCart.addEventListener('click', e => {
 
             const optionSelection = productOption.value;
+            console.log(optionSelection);
             // Condition pour vérifier si l'option a bien été choisie : Si elle ne l'est pas, une alerte est envoyée à l'utilisateur et le produit n'est pas ajouté au panier. Sinon un objet avec l'ID, l'option et la quantité du produit est crée.
             if (optionSelection == 'null') {
                 e.preventDefault();
-                window.alert(`Vous devez sélectionner le coloris de l'article`);
+                window.alert(`Vous devez sélectionner le coloris de l'article.`);
             } else {
 
                 //Création objet à intégrer dans le localstorage
@@ -55,15 +63,15 @@ fetch('http://localhost:3000/api/teddies/' + urlProductId)
                     optionProduct: optionSelection,
                     quantity: 1
                 };
-                //Vérifier si localstorage est vide ou contient des données 
-                let productInLocStor = JSON.parse(localStorage.getItem('product'));
+                // C/C ICI
                 // Si localstorage vide, création d'un tableau vide
                 if (!productInLocStor) {
                     productInLocStor = [];
                 };
 
-                let c = 0
-                //Boucle pour itérer sur les objets du tableau
+                let c = 0;
+
+                //Boucle pour itérer sur les objets du tableau du localstorage
                 for (let p = 0; p < productInLocStor.length; p++) {
 
                     //Si l'ID du produit dans le localstorage est égal à l'ID de l'objet que l'on veut ajouter au panier ET que leur option (couleur) est identique, alors j'incrémente +1 à la quantité
@@ -71,16 +79,60 @@ fetch('http://localhost:3000/api/teddies/' + urlProductId)
                         productInLocStor[p].quantity++;
                         localStorage.setItem('product', JSON.stringify(productInLocStor));
                         c = 1;
+                    };
+                };
 
-                    }
-                }
-                if (c == 0) {
+                if (c === 0) {
                     //Insérer les données/objets dans le tableau
                     productInLocStor.push(productValues);
                     // Mettre les données dans le localstorage au format objet JSON
                     localStorage.setItem('product', JSON.stringify(productInLocStor));
-                }
-            }
+                };
+            };
         });
-
     });
+
+function sumQty() {
+    productInLocStor.forEach(el => totalQty += el.quantity)
+};
+
+function displayBubble(totalQty) {
+    document.getElementById('nbInCart').classList.add('header__nbInCart');
+    document.getElementById('nbInCart').textContent = totalQty;
+};
+
+
+function removeBubble() {
+    document.getElementById('nbInCart').classList.remove('header__nbInCart');
+    document.getElementById('nbInCart').textContent = "";
+};
+
+function updateTotalQty(){
+    if(!optionProduct) //
+    addCart.addEventListener('click', () => {
+        totalQty++;
+        displayBubble(totalQty);
+    });
+};
+
+if (productInLocStor) {
+    sumQty();
+    displayBubble(totalQty);
+    addCart.addEventListener('click', () => {
+        totalQty++;
+        displayBubble(totalQty);
+    });
+} else {
+    removeBubble();
+    addCart.addEventListener('click', () => {
+        totalQty++;
+        displayBubble(totalQty);
+    });
+};
+
+
+/* 
+Si j'ai des produits dans le localStorage j'affiche une bulle
+Si je n'ai pas de produits dans le localStorage, je n'affiche pas de bulle
+Quand j'ajoute un produit au panier la quantité dans la bulle se met à jour
+*/

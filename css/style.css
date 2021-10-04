@@ -211,6 +211,7 @@ body .header__cartContainer, #color-select .header__cartContainer, .form__input 
 .header__cartContainer {
   display: flex;
   align-items: baseline;
+  position: relative;
 }
 .header__cartName {
   font-size: 1.3em;
@@ -227,6 +228,28 @@ body .header__cartContainer, #color-select .header__cartContainer, .form__input 
   font-size: 1.8em;
   color: transparent;
   -webkit-text-stroke: 1px #303030;
+}
+.header__nbInCart {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  font-size: 0.8em;
+  padding: 0.7rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+@media screen and (min-width: 1200px) {
+  .header__nbInCart {
+    bottom: 25px;
+    left: 90px;
+  }
 }
 
 .footer {

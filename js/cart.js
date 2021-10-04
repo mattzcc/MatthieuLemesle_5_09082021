@@ -1,4 +1,4 @@
-let productInLocStor = JSON.parse(localStorage.getItem('product'));
+// let productInLocStor = JSON.parse(localStorage.getItem('product'));
 let resultSubTotal;
 let total = 0;
 //console.log(productInLocStor);
@@ -229,7 +229,7 @@ orderBtn.addEventListener('click', e => {
         // Fonction pour affichage utilisateur
         function displayNotValidInput(input) {
             input.classList.add('form__input--red');
-            input.nextElementSibling.textContent = `Merci de compléter ce champ.`
+            input.nextElementSibling.textContent = `Veuillez compléter ce champ.`
         };
 
         function doPostRequest() {

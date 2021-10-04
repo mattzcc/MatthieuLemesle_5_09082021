@@ -17,6 +17,7 @@
     &__cartContainer {
         display: flex;
         align-items: baseline;
+        position: relative;
     }
 
     &__cartName {
@@ -34,5 +35,26 @@
         font-size: 1.8em;
         color: transparent;
         -webkit-text-stroke: 1px #303030;
+    }
+
+    &__nbInCart {
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        color: white;
+        font-weight: bold;
+        font-size: .8em;
+        padding: .7rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        @include screen-desktop{
+            bottom: 25px;
+            left: 90px;
+        }
     }
 }
