@@ -253,7 +253,7 @@ orderBtn.addEventListener('click', e => {
                 })
                 .then(response => response.json())
                 .then(data => {
-                    window.location = './pages/confirmation.html?orderId=' + data.orderId;
+                    window.location = '/pages/confirmation.html?orderId=' + data.orderId;
                 });
 
         };
