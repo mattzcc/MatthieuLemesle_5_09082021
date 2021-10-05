@@ -1,6 +1,5 @@
 .items-list {
-    background: linear-gradient(to bottom, lighten(#FDB99B, 5), lighten(#CD8BF3, 10));
-    // background: linear-gradient(to bottom, #f8deb0, #e2c491);
+    background: $main-background;
     padding: 3rem 3rem;
     box-shadow: 0 2px 10px rgba(0, 0, 0, .5) inset;
 
@@ -29,18 +28,15 @@
 .card {
     display: block;
     width: 100%;
-    background: #fff;
+    background: $cards-background;
     box-shadow: $cards-shadow;
     border-radius: 2rem;
     padding-bottom: 0.6rem;
     transform: scale(1);
     transition: all, 200ms;
-    //position: relative;
-
 
     &:hover {
         transform: scale(1.02);
-        // filter: grayscale(80%);
 
         .card__button {
             visibility: visible;
@@ -57,7 +53,7 @@
         visibility: hidden;
 
         &--style {
-            background: pink;
+            background: $button-style-bg;
             border-radius: .5rem;
             padding: .8rem;
             font-weight: bold;

@@ -1,5 +1,5 @@
 .header {
-    background: #fff;
+    background: $header-background;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -7,7 +7,7 @@
 
     &__logo--color,
     &__cartContainer--color {
-        color: #303030;
+        color: $header-text;
     }
 
     &__logo {
@@ -34,7 +34,7 @@
     &__cartIcon {
         font-size: 1.8em;
         color: transparent;
-        -webkit-text-stroke: 1px #303030;
+        -webkit-text-stroke: 1px $header-text;
     }
 
     &__nbInCart {

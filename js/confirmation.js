@@ -2,7 +2,6 @@
 let urlConfirmation = new URL(window.location.href);
 // Récupération de l'ID de commande dans l'URL
 let orderId = urlConfirmation.searchParams.get('orderId');
-console.log(orderId)
 
 // Affichage de l'ID de commande sur la page
 document.getElementById('confirmation-details__id').textContent = orderId;

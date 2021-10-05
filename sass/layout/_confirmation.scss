@@ -19,10 +19,10 @@
 
 
     &--style{
-        background-color: white;
+        background-color: $confirmation-bgcolor;
         border-radius: .2rem;
         padding: .2rem;
         font-weight: bold;
-        border: 1px solid pink;
+        border: $confirmation-border;
     }
 }

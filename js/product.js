@@ -29,11 +29,13 @@ fetch('http://localhost:3000/api/teddies/' + urlProductId)
         const productDescription = document.querySelector('.product__description');
         productDescription.textContent = dataProduct.description;
 
+
+        const productOption = document.querySelector('#color-select');
         // Boucle afin d'itérer sur les options de couleurs de chacun des produits
         for (let i = 0; i < dataProduct.colors.length; i++) {
 
             const productColorOption = dataProduct.colors[i];
-            const productOption = document.querySelector('#color-select');
+            // const productOption = document.querySelector('#color-select');
             const productSelection = document.createElement('option');
             productOption.append(productSelection);
             productSelection.classList.add('product__option');
@@ -44,13 +46,9 @@ fetch('http://localhost:3000/api/teddies/' + urlProductId)
         }
 
 
-        const productOption = document.querySelector('#color-select');
-        
         //Evenement au clic sur le bouton Ajouter au panier
         addCart.addEventListener('click', e => {
-
             const optionSelection = productOption.value;
-            console.log(optionSelection);
             // Condition pour vérifier si l'option a bien été choisie : Si elle ne l'est pas, une alerte est envoyée à l'utilisateur et le produit n'est pas ajouté au panier. Sinon un objet avec l'ID, l'option et la quantité du produit est crée.
             if (optionSelection == 'null') {
                 e.preventDefault();
@@ -63,7 +61,7 @@ fetch('http://localhost:3000/api/teddies/' + urlProductId)
                     optionProduct: optionSelection,
                     quantity: 1
                 };
-                // C/C ICI
+
                 // Si localstorage vide, création d'un tableau vide
                 if (!productInLocStor) {
                     productInLocStor = [];
@@ -88,51 +86,41 @@ fetch('http://localhost:3000/api/teddies/' + urlProductId)
                     // Mettre les données dans le localstorage au format objet JSON
                     localStorage.setItem('product', JSON.stringify(productInLocStor));
                 };
+                window.alert(`Votre article a bien été ajouté au panier.`)
             };
         });
+
+        // Ajout de la bulle de notification indiquant le nb d'articles dans le panier
+        function sumQty() {
+            productInLocStor.forEach(el => totalQty += el.quantity);
+            return totalQty;
+        };
+
+        function displayBubble(totalQty) {
+            document.getElementById('nbInCart').classList.add('header__nbInCart');
+            document.getElementById('nbInCart').textContent = totalQty;
+        };
+
+
+        function removeBubble() {
+            document.getElementById('nbInCart').classList.remove('header__nbInCart');
+            document.getElementById('nbInCart').textContent = "";
+        };
+
+        if (productInLocStor) {
+            sumQty();
+            displayBubble(totalQty)
+        } else {
+            removeBubble();
+        };
+
+        addCart.addEventListener('click', (e) => {
+            const optionSelection = productOption.value;
+            if (optionSelection !== 'null') {
+                totalQty++
+                displayBubble(totalQty)
+            } else {
+                e.preventDefault();
+            }
+        });
     });
-
-function sumQty() {
-    productInLocStor.forEach(el => totalQty += el.quantity)
-};
-
-function displayBubble(totalQty) {
-    document.getElementById('nbInCart').classList.add('header__nbInCart');
-    document.getElementById('nbInCart').textContent = totalQty;
-};
-
-
-function removeBubble() {
-    document.getElementById('nbInCart').classList.remove('header__nbInCart');
-    document.getElementById('nbInCart').textContent = "";
-};
-
-function updateTotalQty(){
-    if(!optionProduct) //
-    addCart.addEventListener('click', () => {
-        totalQty++;
-        displayBubble(totalQty);
-    });
-};
-
-if (productInLocStor) {
-    sumQty();
-    displayBubble(totalQty);
-    addCart.addEventListener('click', () => {
-        totalQty++;
-        displayBubble(totalQty);
-    });
-} else {
-    removeBubble();
-    addCart.addEventListener('click', () => {
-        totalQty++;
-        displayBubble(totalQty);
-    });
-};
-
-
-/* 
-Si j'ai des produits dans le localStorage j'affiche une bulle
-Si je n'ai pas de produits dans le localStorage, je n'affiche pas de bulle
-Quand j'ajoute un produit au panier la quantité dans la bulle se met à jour
-*/

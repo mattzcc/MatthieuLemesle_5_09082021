@@ -1,7 +1,7 @@
 .footer {
    width: 100%;
-   background: #303030;
-   color: #FFF;
+   background: $color-footer;
+   color: $footer-text;
    padding: 1.5rem;
 
    @include screen-desktop {
@@ -33,7 +33,7 @@
       align-items: baseline;
 
       &--color{
-         color: #fff;
+         color: $footer-text;
       }
    }
 

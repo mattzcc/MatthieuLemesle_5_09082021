@@ -1,7 +1,6 @@
 // let productInLocStor = JSON.parse(localStorage.getItem('product'));
 let resultSubTotal;
 let total = 0;
-//console.log(productInLocStor);
 
 // Affichage contenu panier vide ou contenu
 if (productInLocStor == null) {
@@ -55,7 +54,6 @@ if (productInLocStor == null) {
 
                 // Affectation et incrémentation du résultat de la fonction subTotal à la variable total
                 total += resultSubTotal;
-                // console.log(total);
 
                 newEltPrice.textContent = (resultSubTotal / 100).toFixed(2) + ' €';
 
@@ -68,7 +66,6 @@ if (productInLocStor == null) {
                 /* Je sélectionne l'élément sur lequel écouter l'évènement click 
                 Si l'ID de l'article et sa couleur sont égaux avec la refId et refOpt alors trouve son index puis supprime l'objet */
                 newEltTrash.addEventListener('click', () => {
-                    console.log(productInLocStor[d]);
 
                     productInLocStor.splice(d, 1);
                     localStorage.setItem('product', JSON.stringify(productInLocStor));
@@ -168,40 +165,31 @@ orderBtn.addEventListener('click', e => {
 
         if (!checkInputValue(lastNameRegExp, lastName)) {
             document.getElementById('lastName').textContent = `Votre nom ne doit pas contenir de chiffres ou caractères spéciaux.`
-            console.log('NOT OK');
         };
 
         if (!checkInputValue(firstNameRegExp, firstName)) {
             document.getElementById('firstName').textContent = `Votre prénom ne doit pas contenir de chiffres ou caractères spéciaux.`
-            console.log('NOT OK');
         };
 
         if (!checkInputValue(addressRegExp, address)) {
             document.getElementById('address').textContent = `Votre adresse ne doit pas contenir de caractères spéciaux.`
-            console.log('NOT OK');
         };
 
         if (!checkInputValue(zipCodeRegExp, zipCode)) {
             document.getElementById('zipCode').textContent = `Votre code postal doit être composé de 5 chiffres.`
-            console.log('NOT OK');
         };
 
         if (!checkInputValue(cityRegExp, city)) {
             document.getElementById('city').textContent = `Votre ville ne doit pas contenir de chiffres ou caractères spéciaux.`
-            console.log('NOT OK');
         };
 
         if (!checkInputValue(phoneRegExp, phone)) {
             document.getElementById('phone').textContent = `Votre numéro de téléphone doit être composé de 10 chiffres.`
-            console.log('NOT OK');
         };
 
         if (!checkInputValue(emailRegExp, email)) {
             document.getElementById('email').textContent = `Votre adresse email est incorrecte.`
-            console.log('NOT OK');
         };
-
-        console.log(b);
 
         let valid = true;
 
@@ -212,7 +200,6 @@ orderBtn.addEventListener('click', e => {
         });
 
         if (valid && b === 7) {
-            console.log(`Well done !`);
             doPostRequest();
         };
 
@@ -249,8 +236,6 @@ orderBtn.addEventListener('click', e => {
                 products.push(item.productId);
 
             }
-            console.log(products);
-
 
             // Création de l'objet à envoyer au serveur
             const sendToServer = {
@@ -268,7 +253,6 @@ orderBtn.addEventListener('click', e => {
                 })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data.orderId);
                     window.location = '/pages/confirmation.html?orderId=' + data.orderId;
                 });
 
