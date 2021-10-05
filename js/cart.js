@@ -253,7 +253,7 @@ orderBtn.addEventListener('click', e => {
                 })
                 .then(response => response.json())
                 .then(data => {
-                    window.location = `/pages/confirmation.html?orderId=` + data.orderId;
+                    window.location = `./pages/confirmation.html?orderId=` + data.orderId;
                 });
 
         };
@@ -262,5 +262,3 @@ orderBtn.addEventListener('click', e => {
         alert('Votre panier est vide. \nVous ne pouvez pas valider votre commande.')
     };
 });
-
-console.log(window.location);
