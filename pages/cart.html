@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- En-tête de la page -->
+    <meta charset="utf-8" />
+    <meta content="To be completed" name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lakki+Reddy&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/bb065dc08a.js" crossorigin="anonymous"></script>
+    <script src="../js/cart-bubble.js" defer></script>
+    <script src="../js/cart.js" defer></script>
+    <title>Panier - OriTeddy by Orinoco</title>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="../index.html" class="header__logo header__logo--color">OriTeddy</a>
+        <a href="./cart.html" class="header__cartContainer header__cartContainer--color">
+            <span class="header__cartName">Panier</span><span id="nbInCart"></span>
+            <i class="fas fa-shopping-cart header__cartIcon"></i>
+        </a>
+    </header>
+    <!-- Product -->
+    <main class="items-list">
+        <div class="arrow"><a href="../index.html"><i class="fas fa-arrow-left arrow--style"></i> Continuer vos
+                achats</a></div>
+        <h1 id="cart-title">Votre panier</h1>
+        <div class="cart-container cart--style">
+            <div class="cart">
+                <div class="cart__header">Article</div>
+                <div class="cart__header">Couleur</div>
+                <div class="cart__header">Quantité</div>
+                <div class="cart__header">Prix</div>
+            </div>
+            <div id="cart__content">
+            </div>
+        </div>
+
+        <form id="form">
+            <div class="form__container">
+                <div class="form__block"><label for="lastName" class="form__title">Nom</label>
+                    <input class="form__input" name="lastName" type="text" required
+                        placeholder="Votre nom de famille" />
+                    <small id="lastName" class="form__textAlert--red"></small>
+                </div>
+                <div class="form__block"><label for="firstName" class="form__title">Prénom</label>
+                    <input class="form__input" name="firstName" type="text" required placeholder="Votre prénom" />
+                    <small id="firstName" class="form__textAlert--red"></small>
+                </div>
+            </div>
+            <div class="form__container">
+                <div class="form__block">
+                    <label for="address" class="form__title">Adresse</label>
+                    <input class="form__input" name="address" type="text" required placeholder="Votre adresse" />
+                    <small id="address" class="form__textAlert--red"></small>
+                </div>
+            </div>
+            <div class="form__container">
+                <div class="form__block"><label for="zipCode" class="form__title">Code Postal</label>
+                    <input class="form__input" name="zipCode" type="number" required placeholder="ex: 83200" />
+                    <small id="zipCode" class="form__textAlert--red"></small>
+                </div>
+                <div class="form__block"><label for="city" class="form__title">Ville</label>
+                    <input class="form__input" name="city" type="text" required placeholder="Votre ville" />
+                    <small id="city" class="form__textAlert--red"></small>
+                </div>
+            </div>
+            <div class="form__container">
+                <div class="form__block"><label for="phone" class="form__title">Téléphone</label>
+                    <input class="form__input" name="phone" type="tel" required placeholder="ex: 0612345678" />
+                    <small id="phone" class="form__textAlert--red"></small>
+                </div>
+                <div class="form__block"><label for="email" class="form__title">E-mail</label>
+                    <input class="form__input" name="email" type="email" required placeholder="example@mail.com" />
+                    <small id="email" class="form__textAlert--red"></small>
+                </div>
+            </div>
+
+            <div class="form__button"><button type="submit" value="Submit" id="order-btn"
+                    class="card__button--style">Commander</button></div>
+        </form>
+    </main>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__block">
+            <h3 class="footer__title">Suivez-nous</h3>
+            <a href="#" class="footer__link footer__link--color">
+                <i class="fab fa-facebook footer__socialIcon"></i>
+                <div class="footer__linkName">Facebook</div>
+            </a>
+            <a href="#" class="footer__link footer__link--color">
+                <i class="fab fa-instagram footer__socialIcon"></i>
+                <div class="footer__linkName">Instagram</div>
+            </a>
+            <a href="#" class="footer__link footer__link--color">
+                <i class="fab fa-twitter footer__socialIcon"></i>
+                <div class="footer__linkName">Twitter</div>
+            </a>
+        </div>
+        <hr class="separation-line">
+        <div class="footer__block">
+            <h3 class="footer__title">Service Clients</h3>
+            <a href="mailto:contact@oriteddy.com" class="footer__link footer__link--color">
+                <div class="footer__linkName">Contactez-nous</div>
+            </a>
+            <a href="" class="footer__link footer__link--color">
+                <div class="footer__linkName">Statut de commande</div>
+            </a>
+            <a href="" class="footer__link footer__link--color">
+                <div class="footer__linkName">Échanges et retours</div>
+            </a>
+            <a href="" class="footer__link footer__link--color">
+                <div class="footer__linkName">FAQ</div>
+            </a>
+        </div>
+        <hr class="separation-line">
+        <div class="footer__block">
+            <h3 class="footer__title">À Propos</h3>
+            <a href="" class="footer__link footer__link--color">
+                <div class="footer__linkName">Qui sommes-nous ?</div>
+            </a>
+            <a href="" class="footer__link footer__link--color">
+                <div class="footer__linkName">Blog</div>
+            </a>
+        </div>
+    </footer>
+</body>
+
+</html>

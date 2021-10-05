@@ -1,10 +1,10 @@
-body {
+body, #color-select, .form__input {
     font-family: 'Titillium Web', sans-serif;
     
     .header{
         font-family: 'Lakki Reddy', cursive;
        
-        &__cart{
+        &__cartContainer{
             font-family: 'Titillium Web', sans-serif; 
         }
     }

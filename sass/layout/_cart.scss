@@ -1,0 +1,161 @@
+#cart-title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    font-size: 1.5em;
+}
+
+.cart--style {
+    background-color: $cards-background;
+    border-radius: .5rem;
+    padding: 1rem;
+    box-shadow: $cards-shadow;
+}
+
+.cart {
+    display: flex;
+    background-color: pink;
+    border-radius: .2rem;
+    padding: .3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: #000 solid 1px;
+    font-size: .8em;
+
+    @include screen-tablet {
+        font-size: 1em;
+    }
+
+    &__header {
+        width: 27%;
+
+        &:nth-child(4) {
+            width: 19%;
+        }
+    }
+}
+
+#cart__content {
+    display: flex;
+    flex-direction: column;
+    padding: .3rem;
+    line-height: 2rem;
+    margin-top: .5rem;
+    font-size: .9em;
+
+    @include screen-tablet {
+        font-size: 1em;
+    }
+
+    .cart__line {
+        display: flex;
+        width: 100%;
+    }
+
+    // modifier class pour optimiser lignes
+    .cart__product{
+        width: 21%;
+        @include screen-tablet {
+            width: 27%;
+        }
+    }
+    .cart__option {
+        text-transform: capitalize;
+        width: 33%;
+        
+        @include screen-tablet {
+            width: 27%;
+        }
+    }
+
+    .cart__quantity{
+        padding-left: 5%;
+        width: 10%;
+        @include screen-tablet {
+            width: 27%;
+            padding: 0;
+        }
+    }
+
+    .cart__price {
+        width: 31%;
+        padding-left: 9%;
+        @include screen-tablet {
+            width: 14%;
+            padding: 0;
+        }
+    }
+
+    .cart__trash {
+        width: auto;
+        cursor: pointer;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+}
+
+.total-container {
+    margin: 1rem auto;
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+
+    @include screen-desktop {
+        width: 25%;
+    }
+}
+
+
+#form {
+    margin: 1.5rem auto;
+    line-height: 2.5rem;
+
+    @include screen-desktop {
+        width: 70%;
+    }
+}
+
+.form__container {
+    display: flex;
+    flex-direction: column;
+
+    @include screen-desktop {
+        flex-direction: row;
+    }
+}
+
+.form__block {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    @include screen-desktop {
+        width: 100%;
+        margin-right: 1rem;
+    }
+}
+
+.form__input {
+    outline: none;
+    border: black 1px solid;
+    border-radius: .3rem;
+    padding: .5rem;
+
+    &--red {
+        border: red 2px solid;
+    }
+
+}
+
+.form__button {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.form__textAlert--red {
+    font-size: .8em;
+    font-weight: bold;
+    color: red;
+}

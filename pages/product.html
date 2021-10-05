@@ -8,8 +8,8 @@
         content="OriTeddy, votre boutique spécialisée dans la vente d'ours en peluche faits à la main par nos artisants"
         name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="./img/favicon.png">
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
+    <link rel="stylesheet" href="../css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,26 +18,39 @@
         href="https://fonts.googleapis.com/css2?family=Lakki+Reddy&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/bb065dc08a.js" crossorigin="anonymous"></script>
-    <script src="./js/cart-bubble.js" defer></script>
-    <script src="./js/index.js" defer></script>
+    <script src="../js/product.js" defer></script>
     <title>OriTeddy by Orinoco</title>
 </head>
 
 <body>
     <!-- Header -->
     <header class="header">
-        <a href="#" class="header__logo header__logo--color">OriTeddy</a>
-        <a href="./pages/cart.html" class="header__cartContainer header__cartContainer--color">
+        <a href="../index.html" class="header__logo header__logo--color">OriTeddy</a>
+        <a href="./cart.html" class="header__cartContainer header__cartContainer--color">
             <span class="header__cartName">Panier</span><span id="nbInCart"></span>
             <i class="fas fa-shopping-cart header__cartIcon"></i>
         </a>
     </header>
-    <!-- Items List -->
+    <!-- Product -->
     <main class="items-list">
-        <h1 class="items-list__title">Découvrez notre boutique d'ours en peluche faits à la main</h1>
-        <div class="products-grid">
+        <div class="arrow"><a href="../index.html"><i class="fas fa-arrow-left arrow--style"></i> Revenir aux
+                produits</a></div>
+        <div class="grid-product">
+            <div class="product__img"><img class="product__img--size"></div>
+            <div class="product__name-price">
+                <div class="product__name"></div>
+                <div class="product__price"></div>
+            </div>
+            <div class="product__description"></div>
+            <div class="product__dropdown-option"><label for="color-select">
+                    <select name="color" id="color-select">
+                        <option selected disabled value="null">Sélectionnez la couleur</option>
+                    </select></label></div>
+            <button class="product__button card__button--style">Ajouter au Panier</button>
         </div>
+
     </main>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer__block">
@@ -82,7 +95,6 @@
             </a>
         </div>
     </footer>
-
 </body>
 
 </html>

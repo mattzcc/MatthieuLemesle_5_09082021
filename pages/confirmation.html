@@ -8,8 +8,8 @@
         content="OriTeddy, votre boutique spécialisée dans la vente d'ours en peluche faits à la main par nos artisants"
         name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="./img/favicon.png">
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
+    <link rel="stylesheet" href="../css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,24 +18,35 @@
         href="https://fonts.googleapis.com/css2?family=Lakki+Reddy&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/bb065dc08a.js" crossorigin="anonymous"></script>
-    <script src="./js/cart-bubble.js" defer></script>
-    <script src="./js/index.js" defer></script>
-    <title>OriTeddy by Orinoco</title>
+    <script src="../js/confirmation.js" defer></script>
+    <title>Confirmation de commade - OriTeddy by Orinoco</title>
 </head>
 
 <body>
     <!-- Header -->
     <header class="header">
-        <a href="#" class="header__logo header__logo--color">OriTeddy</a>
-        <a href="./pages/cart.html" class="header__cartContainer header__cartContainer--color">
-            <span class="header__cartName">Panier</span><span id="nbInCart"></span>
+        <a href="../index.html" class="header__logo header__logo--color">OriTeddy</a>
+        <a href="./cart.html" class="header__cartContainer header__cartContainer--color">
+            <span class="header__cartName">Panier</span>
             <i class="fas fa-shopping-cart header__cartIcon"></i>
         </a>
     </header>
-    <!-- Items List -->
+    <!-- Order confirmation -->
     <main class="items-list">
-        <h1 class="items-list__title">Découvrez notre boutique d'ours en peluche faits à la main</h1>
-        <div class="products-grid">
+        <div class="arrow"><a href="../index.html"><i class="fas fa-arrow-left arrow--style"></i> Retour à l'accueil</a>
+        </div>
+        <div class="order-confirmation-container">
+            <h1 id="title-order-confirmation">Merci pour votre commande !</h1>
+            <div class="order-confirmation-img">
+                <img src="../img/teddy-day.svg" alt="Image d'une femme heureuse avec un ours en peluche dans les bras">
+            </div>
+            <div class="confirmation-details">
+                <p>Votre commande porte le numéro <span id="confirmation-details__id"
+                        class="confirmation-details--style"></span> pour un montant total de <span
+                        id="confirmation-details__price" class="confirmation-details--style"></span>.</p>
+                <p>Nos équipes mettent tout en oeuvre pour que vous la receviez dans les meilleurs délais.</p>
+                <p>A très bientôt sur OriTeddy !</p>
+            </div>
         </div>
     </main>
     <!-- Footer -->
@@ -82,7 +93,6 @@
             </a>
         </div>
     </footer>
-
 </body>
 
 </html>

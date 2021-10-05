@@ -1,7 +1,11 @@
-$color-primary: #321d62;
-$color-secondary: #44d9e6;
-$color-tertiary: rgb(253, 169, 13);
-$color-text : #000;
-$color-shadow : rgb(190, 190, 190);
-$color-background: #F4F4F4;
-$color-footer: #353535;
+$header-text: #303030;
+$header-background: #FFF;
+$main-background : linear-gradient(to bottom, lighten(#FDB99B, 5), lighten(#CD8BF3, 10));
+$color-footer: #303030;
+$footer-text: #FFF;
+$cards-background: #FFF;
+$cards-shadow :1px 1px 5px rgb(76, 76, 76);
+$confirmation-border: 1px solid pink;
+$confirmation-bgcolor: #FFF;
+$button-style-bg: pink;
+

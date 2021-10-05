@@ -1,28 +1,60 @@
-.header{
-    background: #303030;
+.header {
+    background: $header-background;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    padding: 20px 20px;
+    padding: 1.5rem;
 
-    &_text--color{
-        color: #fff;
+    &__logo--color,
+    &__cartContainer--color {
+        color: $header-text;
     }
 
-    &__name{
+    &__logo {
         font-size: 2.5em;
     }
 
-    &__cart{
+    &__cartContainer {
         display: flex;
-        font-size: 1.5em;
+        align-items: baseline;
+        position: relative;
+    }
 
-        &-name{
-            display: none;
-            @include screen-desktop{
-                display: block;
-                padding-right: 10px;
-            }
+    &__cartName {
+        font-size: 1.3em;
+        font-weight: bold;
+        display: none;
+
+        @include screen-desktop {
+            display: block;
+            padding-right: 0.8rem;
+        }
+    }
+
+    &__cartIcon {
+        font-size: 1.8em;
+        color: transparent;
+        -webkit-text-stroke: 1px $header-text;
+    }
+
+    &__nbInCart {
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        color: white;
+        font-weight: bold;
+        font-size: .8em;
+        padding: .7rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        @include screen-desktop{
+            bottom: 25px;
+            left: 90px;
         }
     }
 }

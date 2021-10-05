@@ -1,12 +1,11 @@
 {
-  "name": "mes-parrainages",
+  "name": "orinoco",
   "version": "1.0.0",
   "description": "Matthieu Lemesle",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch ./sass/main.scss:./css/style.css",
-    "prefix": "postcss ./css/style.css --use autoprefixer -d ./css/style.css",
-    "prod": "sass --watch ./sass/main.scss:./css/style.css --style compressed postcss /css/style.css --use autoprefixer -d /css/style.css"
+    "sass": "sass --watch ./sass/main.scss:./css/style.css --style compressed",
+    "prefix": "postcss ./css/style.css --use autoprefixer -d ./css/prefixed/"
   },
   "repository": {
     "type": "git",
