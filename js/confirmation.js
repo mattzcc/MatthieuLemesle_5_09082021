@@ -18,4 +18,4 @@ localStorage.clear();
 // Condition s'il n'y a pas de prix stocké dans le localStorage quand l'utilisateur refresh la page il est redirigé sur index.html
 if(!displayPrice){
     window.location = '../index.html'
-}
+};
