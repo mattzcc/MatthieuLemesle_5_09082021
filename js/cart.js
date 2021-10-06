@@ -141,13 +141,29 @@ orderBtn.addEventListener('click', e => {
 
 
         // Création de la RegExp Nom et Prénom
-        const lastNameRegExp = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð',-\s]*?$/g;
-        const firstNameRegExp = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð',-]*?$/g;
-        const addressRegExp = /^[0-9a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð',.-\s]*?$/g;
+        const lastNameRegExp = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð',-\s]{2,}$/g;
+        const firstNameRegExp = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð',-]{2,}$/g;
+        const addressRegExp = /^[0-9a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð',.-\s]{10,}$/g;
         const zipCodeRegExp = /^[0-9]{5}$/g;
-        const cityRegExp = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð',-\s]*?$/g;
+        const cityRegExp = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð',-\s]+$/g;
         const phoneRegExp = /^[0-9]{10}$/g;
-        const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g;
+        const emailRegExp = /^[a-zA-Z0-9.\-_]+[@]{1}[a-zA-Z0-9.\-_]+[.]{1}[a-z]{2,10}$/g;
+
+
+        function checkEmptyInput(input) {
+            if (input.value.length !== 0) {
+                return true;
+            } else {
+                displayNotValidInput(input);
+                return false;
+            }
+        };
+
+        // Fonction pour affichage utilisateur
+        function displayNotValidInput(input) {
+            input.classList.add('form__input--red');
+            input.nextElementSibling.textContent = `Veuillez compléter ce champ.`
+        };
 
 
         let b = 0;
@@ -164,11 +180,11 @@ orderBtn.addEventListener('click', e => {
 
 
         if (!checkInputValue(lastNameRegExp, lastName)) {
-            document.getElementById('lastName').textContent = `Votre nom ne doit pas contenir de chiffres ou caractères spéciaux.`
+            document.getElementById('lastName').textContent = `Votre nom doit être composé d'au minimum 2 caractères et ne doit pas contenir de chiffres ou caractères spéciaux.`
         };
 
         if (!checkInputValue(firstNameRegExp, firstName)) {
-            document.getElementById('firstName').textContent = `Votre prénom ne doit pas contenir de chiffres ou caractères spéciaux.`
+            document.getElementById('firstName').textContent = `Votre prénom doit être composé d'au minimum 2 caractères et ne doit pas contenir de chiffres ou caractères spéciaux.`
         };
 
         if (!checkInputValue(addressRegExp, address)) {
@@ -191,6 +207,7 @@ orderBtn.addEventListener('click', e => {
             document.getElementById('email').textContent = `Votre adresse email est incorrecte.`
         };
 
+
         let valid = true;
 
         allInputs.forEach(input => {
@@ -201,22 +218,6 @@ orderBtn.addEventListener('click', e => {
 
         if (valid && b === 7) {
             doPostRequest();
-        };
-
-
-        function checkEmptyInput(input) {
-            if (input.checkValidity()) {
-                return true;
-            } else {
-                displayNotValidInput(input);
-                return false;
-            }
-        };
-
-        // Fonction pour affichage utilisateur
-        function displayNotValidInput(input) {
-            input.classList.add('form__input--red');
-            input.nextElementSibling.textContent = `Veuillez compléter ce champ.`
         };
 
         function doPostRequest() {

@@ -57,7 +57,7 @@ fetch('http://localhost:3000/api/teddies')
         }
     })
     // Affichage d'un message d'erreur si la requête API échoue
-    .catch((err) => {
+    .catch(() => {
         const grid = document.querySelector('.products-grid');
         const errMsg = document.createElement('p');
         grid.appendChild(errMsg);
