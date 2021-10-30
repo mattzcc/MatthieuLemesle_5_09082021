@@ -3,7 +3,7 @@ let resultSubTotal;
 let total = 0;
 
 // Affichage contenu panier vide ou contenu
-if (productInLocStor == null) {
+if (!productInLocStor) {
     const selectClass = document.querySelector('#cart__content');
     const newEltP = document.createElement('p');
     newEltP.textContent = 'Votre panier est vide';

@@ -2,6 +2,7 @@
 fetch('http://localhost:3000/api/teddies')
     .then(response => response.json())
     .then(dataTable => {
+
         // Boucle pour itérer sur les arrays afin de récupérer les données de chacun des produits
         for (let i = 0; i < dataTable.length; i++) {
 

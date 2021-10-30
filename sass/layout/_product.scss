@@ -66,9 +66,27 @@
   font-size: 1em;
 }
 
-.product__button {
+.quantity {
   justify-self: center;
   grid-area: 5 / 1 / 6 / 2;
+  display: flex;
+
+  &__text {
+    padding-right: 10px;
+  }
+
+  &__number {
+    padding: 0 10px;
+  }
+
+  &__add, &__remove{
+    cursor: pointer;
+  }
+}
+
+.product__button {
+  justify-self: center;
+  grid-area: 6 / 1 / 7 / 2;
   cursor: pointer;
 
   @include screen-tablet {
