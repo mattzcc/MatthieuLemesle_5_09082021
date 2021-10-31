@@ -45,8 +45,9 @@ fetch("http://localhost:3000/api/teddies/" + urlProductId)
     // Gestion de la quantité
     // Incrémentation
     const plusIcon = document.querySelector(".quantity__add");
-    let qtyNumber = document.querySelector(".quantity__number").textContent;
-    
+    let numberQty = document.querySelector(".quantity__number").textContent;
+    let qtyNumber = Number(numberQty);
+
     plusIcon.addEventListener("click", (e) => {
       qtyNumber++;
       document.querySelector(".quantity__number").textContent = qtyNumber;
@@ -55,7 +56,7 @@ fetch("http://localhost:3000/api/teddies/" + urlProductId)
     // Décrémentation
     const minusIcon = document.querySelector(".quantity__remove");
     minusIcon.addEventListener("click", (e) => {
-      if (qtyNumber == 1) {
+      if (qtyNumber === 1) {
         e.preventDefault();
       } else {
         qtyNumber--;
